@@ -73,7 +73,7 @@ namespace Eisdiele {
         removeBtn.innerText = "Geld erhalten & Versendet";
         removeBtn.addEventListener("click", removeOne.bind(removeBtn));
         removeBtn.style.lineHeight = "70px";
-        output.appendChild(ordersDiv).innerHTML = "Bestellung:" + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname :" + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Bestellung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
+        output.appendChild(ordersDiv).innerHTML = "Bestellungs_Id:" + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname :" + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Bestellung/Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
         ordersDiv.appendChild(removeBtn);
 
         return ordersDiv;
