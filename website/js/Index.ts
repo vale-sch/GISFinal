@@ -41,7 +41,7 @@ namespace Eisdiele {
     }
 
 
-    export async function generateIce(): Promise<void> {
+    function generateIce(): void {
         for (let index: number = 0; index < jsonObj.length; index++) {
 
             if (jsonObj[index].kategorie == "Waffel") {

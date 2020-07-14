@@ -35,7 +35,7 @@ var Eisdiele;
         iceDiv = document.getElementById("iceDiv");
         iceDiv = document.getElementById("iceDiv");
     }
-    async function generateIce() {
+    function generateIce() {
         for (let index = 0; index < Eisdiele.jsonObj.length; index++) {
             if (Eisdiele.jsonObj[index].kategorie == "Waffel") {
                 formatDiv = document.createElement("div");
@@ -82,7 +82,6 @@ var Eisdiele;
             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
         }
     }
-    Eisdiele.generateIce = generateIce;
     function onClickCreate(_click) {
         if (localStorage.length > 0) {
             if (this.kategorie == "Eis") {
