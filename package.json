@@ -4,7 +4,7 @@
     "description": "valentinschmidberger",
     "main": "index.js",
     "scripts": {
-        "start": "node js/server.js remote"
+        "start": "node website/js/server.js remote"
     },
     "author": "",
     "license": "ISC",
