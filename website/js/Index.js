@@ -16,6 +16,7 @@ var Eisdiele;
     let articleCounter;
     //let previousImage: string;
     async function init() {
+        await communicate("eis.json");
         await appendFunction();
         theIceCreator();
     }
@@ -30,7 +31,6 @@ var Eisdiele;
         iceDiv = document.getElementById("iceDiv");
     }
     init();
-    communicate("eis.json");
     async function communicate(_url) {
         let response = await fetch(_url);
         Eisdiele.jsonObj = await response.json();

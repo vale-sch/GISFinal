@@ -16,6 +16,7 @@ namespace Eisdiele {
     //let previousImage: string;
 
     async function init(): Promise<void> {
+        await communicate("eis.json");
         await appendFunction();
         theIceCreator();
 
@@ -35,7 +36,7 @@ namespace Eisdiele {
     }
 
     init();
-    communicate("eis.json");
+    
 
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
