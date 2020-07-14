@@ -14,11 +14,11 @@ namespace Eisdiele {
     let constantNumber: number;
     let articleCounter: number;
     window.addEventListener("load", init);
-
+    appendFunction();
 
     async function init(_event: Event): Promise<void> {
         await communicate("eisArtikel.json");
-        appendFunction();
+        
         theIceCreator();
 
     }
@@ -28,6 +28,7 @@ namespace Eisdiele {
         jsonObj = await response.json();
         generateIce();
     }
+
     function appendFunction(): void {
         setupDiv = <HTMLDivElement>document.getElementById("setupDiv");
         waffelDiv = <HTMLDivElement>document.getElementById("WaffelnDiv");
