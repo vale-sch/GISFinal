@@ -15,7 +15,7 @@ var Eisdiele;
     let constantNumber;
     let articleCounter;
     window.addEventListener("load", init);
-    async function init() {
+    async function init(_event) {
         await communicate("eisArtikel.json");
         appendFunction();
         theIceCreator();

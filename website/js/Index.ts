@@ -16,7 +16,7 @@ namespace Eisdiele {
     window.addEventListener("load", init);
 
 
-    async function init(): Promise<void> {
+    async function init(_event: Event): Promise<void> {
         await communicate("eisArtikel.json");
         appendFunction();
         theIceCreator();
