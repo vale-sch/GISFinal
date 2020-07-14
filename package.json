@@ -10,12 +10,12 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/vale-sch/GIS-SoSe2020.git"
+        "url": "git+https://github.com/vale-sch/GISFinal.git"
     },
     "bugs": {
-        "url": "https://github.com/vale-sch/GIS-SoSe2020/issues"
+        "url": "https://github.com/vale-sch/GISFinal/issues"
     },
-    "homepage": "https://github.com/vale-sch/GIS-SoSe2020#readme",
+    "homepage": "https://github.com/vale-sch/GISFinal#readme",
     "dependencies": {
         "@types/mongodb": "^3.5.25",
         "@types/node": "^14.0.13",
