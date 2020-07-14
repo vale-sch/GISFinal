@@ -14,9 +14,9 @@ var Eisdiele;
     let eis;
     let constantNumber;
     let articleCounter;
-    //let previousImage: string;
+    window.addEventListener("load", init);
     async function init() {
-        await communicate("eis.json");
+        await Eisdiele.communicate("eis.json");
         appendFunction();
         theIceCreator();
     }
@@ -29,12 +29,6 @@ var Eisdiele;
         streuselDiv = document.getElementById("StreuselDiv");
         iceDiv = document.getElementById("iceDiv");
         iceDiv = document.getElementById("iceDiv");
-    }
-    init();
-    async function communicate(_url) {
-        let response = await fetch(_url);
-        Eisdiele.jsonObj = await response.json();
-        generateIce();
     }
     function generateIce() {
         for (let index = 0; index < Eisdiele.jsonObj.length; index++) {
@@ -83,6 +77,7 @@ var Eisdiele;
             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
         }
     }
+    Eisdiele.generateIce = generateIce;
     function onClickCreate(_click) {
         if (localStorage.length > 0) {
             if (this.kategorie == "Eis") {

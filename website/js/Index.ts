@@ -13,7 +13,8 @@ namespace Eisdiele {
     let eis: Eis;
     let constantNumber: number;
     let articleCounter: number;
-    //let previousImage: string;
+    window.addEventListener("load", init);
+   
 
     async function init(): Promise<void> {
         await communicate("eis.json");
@@ -35,17 +36,8 @@ namespace Eisdiele {
 
     }
 
-    init();
     
-
-    async function communicate(_url: RequestInfo): Promise<void> {
-        let response: Response = await fetch(_url);
-        jsonObj = await response.json();
-        generateIce();
-
-
-    }
-    function generateIce(): void {
+    export function generateIce(): void {
         for (let index: number = 0; index < jsonObj.length; index++) {
 
             if (jsonObj[index].kategorie == "Waffel") {
