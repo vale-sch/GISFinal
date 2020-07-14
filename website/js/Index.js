@@ -17,7 +17,7 @@ var Eisdiele;
     //let previousImage: string;
     async function init() {
         await communicate("eis.json");
-        await appendFunction();
+        appendFunction();
         theIceCreator();
     }
     function appendFunction() {

@@ -17,7 +17,7 @@ namespace Eisdiele {
 
     async function init(): Promise<void> {
         await communicate("eis.json");
-        await appendFunction();
+        appendFunction();
         theIceCreator();
 
     }
