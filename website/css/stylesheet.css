@@ -1,11 +1,11 @@
 @font-face {
     font-family: Roboto;
-    src: url("/css/Roboto/Roboto-Italic.ttf");
+    src: url("Roboto/Roboto-Italic.ttf");
 }
 
 @font-face {
     font-family: Merianda;
-    src: url("/css/Merienda_One/MeriendaOne-Regular.ttf");
+    src: url("Merienda_One/MeriendaOne-Regular.ttf");
 }
 
 html,
