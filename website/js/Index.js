@@ -16,9 +16,14 @@ var Eisdiele;
     let articleCounter;
     window.addEventListener("load", init);
     async function init() {
-        await Eisdiele.communicate("eis.json");
+        await communicate("eisArtikel.json");
         appendFunction();
         theIceCreator();
+    }
+    async function communicate(_url) {
+        let response = await fetch(_url);
+        Eisdiele.jsonObj = await response.json();
+        generateIce();
     }
     function appendFunction() {
         setupDiv = document.getElementById("setupDiv");
@@ -30,7 +35,7 @@ var Eisdiele;
         iceDiv = document.getElementById("iceDiv");
         iceDiv = document.getElementById("iceDiv");
     }
-    function generateIce() {
+    async function generateIce() {
         for (let index = 0; index < Eisdiele.jsonObj.length; index++) {
             if (Eisdiele.jsonObj[index].kategorie == "Waffel") {
                 formatDiv = document.createElement("div");

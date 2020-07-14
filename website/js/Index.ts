@@ -14,16 +14,20 @@ namespace Eisdiele {
     let constantNumber: number;
     let articleCounter: number;
     window.addEventListener("load", init);
-   
+
 
     async function init(): Promise<void> {
-        await communicate("eis.json");
+        await communicate("eisArtikel.json");
         appendFunction();
         theIceCreator();
 
     }
 
-
+    async function communicate(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch(_url);
+        jsonObj = await response.json();
+        generateIce();
+    }
     function appendFunction(): void {
         setupDiv = <HTMLDivElement>document.getElementById("setupDiv");
         waffelDiv = <HTMLDivElement>document.getElementById("WaffelnDiv");
@@ -36,8 +40,8 @@ namespace Eisdiele {
 
     }
 
-    
-    export function generateIce(): void {
+
+    export async function generateIce(): Promise<void> {
         for (let index: number = 0; index < jsonObj.length; index++) {
 
             if (jsonObj[index].kategorie == "Waffel") {
