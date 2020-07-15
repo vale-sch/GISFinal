@@ -13,7 +13,7 @@
 
         generateBasketArticle();
         generateContentInForm();
-
+        onClickBasket();
 
     }
 
@@ -103,8 +103,8 @@
 
     async function onClickButtonStoreData(_click: MouseEvent): Promise<void> {
         
-        //let url: string = "http://localhost:8100";
-        let url: string = "https://compaktdisk.herokuapp.com";
+       // let url: string = "http://localhost:8100";
+        let url: string = "https://icecreamforyou.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
@@ -119,6 +119,21 @@
     function onClickDeleteStorage(this: Eis, _click: MouseEvent): void {
         localStorage.removeItem(this.stück.toString());
         location.reload();
+    }
+    function onClickBasket(): void {
+        articleCounter = localStorage.length;
+        console.log("HALLLLO");
+        let basketNumber: HTMLLIElement = <HTMLLIElement>document.querySelector("li:last-child");
+        basketNumber.setAttribute("id", "basketNumber");
+        if (articleCounter > 0) {
+            basketNumber.setAttribute("id", "basketNumber");
+            basketNumber.innerHTML = "" + articleCounter;
+            //localStorage.clear();
+        }
+        else {
+            basketNumber.innerHTML = "";
+        }
+
     }
 
 

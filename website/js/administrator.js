@@ -16,7 +16,7 @@ var Eisdiele;
     init();
     async function onClickButtonReceive(_click) {
         //let url: string = "http://localhost:8100";
-        let url = "https://compaktdisk.herokuapp.com";
+        let url = "https://icecreamforyou.herokuapp.com";
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
@@ -38,6 +38,7 @@ var Eisdiele;
         let ordersDiv = document.createElement("div");
         ordersDiv.classList.add("one-order");
         ordersDiv.setAttribute("_id", _order._id);
+        ordersDiv.setAttribute("id", "adminOrderDiv");
         //let orderDiv: HTMLDivElement = document.createElement("div");
         let id = _order._id;
         let forename = _order.Vorname;
@@ -49,14 +50,14 @@ var Eisdiele;
         let removeBtn = document.createElement("button");
         removeBtn.innerText = "Geld erhalten & Versendet";
         removeBtn.addEventListener("click", removeOne.bind(removeBtn));
-        removeBtn.style.lineHeight = "70px";
-        output.appendChild(ordersDiv).innerHTML = "Bestellungs_Id:" + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname :" + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Bestellung/Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
+        removeBtn.style.lineHeight = "25px";
+        output.appendChild(ordersDiv).innerHTML = " Bestellungs_Id: " + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname :" + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Eis-Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
         ordersDiv.appendChild(removeBtn);
         return ordersDiv;
     }
     async function removeOne(_e) {
         //let url: string = "http://localhost:8100";
-        let url = "https://compaktdisk.herokuapp.com";
+        let url = "https://icecreamforyou.herokuapp.com";
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);

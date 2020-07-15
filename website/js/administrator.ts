@@ -32,7 +32,7 @@ namespace Eisdiele {
     async function onClickButtonReceive(_click: Event): Promise<void> {
 
         //let url: string = "http://localhost:8100";
-        let url: string = "https://compaktdisk.herokuapp.com";
+        let url: string = "https://icecreamforyou.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
 
         // tslint:disable-next-line: no-any
@@ -60,7 +60,7 @@ namespace Eisdiele {
         let ordersDiv: HTMLDivElement = document.createElement("div");
         ordersDiv.classList.add("one-order");
         ordersDiv.setAttribute("_id", _order._id);
-
+        ordersDiv.setAttribute("id", "adminOrderDiv");
         //let orderDiv: HTMLDivElement = document.createElement("div");
         let id: string = _order._id;
         let forename: string = _order.Vorname;
@@ -72,8 +72,8 @@ namespace Eisdiele {
         let removeBtn: HTMLButtonElement = document.createElement("button");
         removeBtn.innerText = "Geld erhalten & Versendet";
         removeBtn.addEventListener("click", removeOne.bind(removeBtn));
-        removeBtn.style.lineHeight = "70px";
-        output.appendChild(ordersDiv).innerHTML = "Bestellungs_Id:" + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname :" + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Bestellung/Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
+        removeBtn.style.lineHeight = "25px";
+        output.appendChild(ordersDiv).innerHTML = " Bestellungs_Id: " + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname :" + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Eis-Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
         ordersDiv.appendChild(removeBtn);
 
         return ordersDiv;
@@ -82,7 +82,7 @@ namespace Eisdiele {
     async function removeOne(_e: Event): Promise<void> {
 
         //let url: string = "http://localhost:8100";
-        let url: string = "https://compaktdisk.herokuapp.com";
+        let url: string = "https://icecreamforyou.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
 
         // tslint:disable-next-line: no-any

@@ -33,6 +33,33 @@ main {
     width: 100%;
 }
 
+Button {
+    box-shadow: inset 0px 0px 15px 3px #23395e;
+    background: linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+    background-color: #2e466e;
+    border-radius: 3px;
+    border: 1px solid #1f2f47;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffffa1;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 6px 13px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #263666;
+}
+
+Button:hover {
+    background: linear-gradient(to bottom, #415989 20%, #2e466e 100%);
+    background-color: #5c7fc4;
+    color: white;
+}
+
+Button:active {
+    position: relative;
+    top: 1px;
+}
+
 h1 {
     font-size: 60px;
     text-align: center;
@@ -41,6 +68,10 @@ h1 {
 h2 {
     font-size: 50px;
     text-align: center;
+}
+
+p {
+    font-size: 20px;
 }
 
 
@@ -54,18 +85,32 @@ h2 {
 }
 
 #logo {
-    -webkit-text-stroke: 5px #000000;
+    -webkit-text-stroke: 2px #000000;
+    letter-spacing: .15em;
     color: lemonchiffon;
+    text-shadow: 0 1px 0 hsl(15, 40%, 60%), 0 1px 0 hsl(15, 40%, 58%), 0 3px 0 hsl(15, 40%, 56%), 0 4px 0 hsl(15, 40%, 54%), 0 5px 0 hsl(15, 40%, 52%), 0 6px 1px hsl(15, 40%, 50%), 0 0 5px hsl(15, 20%, 60%), 0 1px 3px hsl(15, 20%, 58%), 0 3px 5px hsl(15, 20%, 56%), 0 5px 10px hsl(15, 20%, 54%), 0 10px 10px hsl(15, 20%, 52%), 0 15px 15px hsl(15, 20%, 50%);
     display: block;
     float: left;
-    font-size: 80px;
+    font-size: 100px;
     line-height: 60px;
 }
 
 #fontawesome {
     color: lemonchiffon;
     padding: 25px 0px 0px 32px;
-    font-size: 120px;
+    font-size: 160px;
+}
+
+#adminOrderDiv {
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    max-width: fit-content;
+    display: inline-table;
+    background: transparent;
+    color: black;
+    margin: auto;
+    margin: 32px 34px 32px 32px;
+    padding: 32px 34px 32px 32px;
 }
 
 #basketNumber {
@@ -75,10 +120,10 @@ h2 {
     line-height: 18px;
     border-radius: 50%;
     position: absolute;
-    right: 0%;
+    right: -2%;
     bottom: 55%;
     background-color: lemonchiffon;
-    color: #254441;
+    color: #000000;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.9em;
@@ -97,7 +142,7 @@ h2 {
     /*border: 5px solid #ff0000;*/
     height: 500px;
     left: 0%;
-    width: 35%;
+    width: 38%;
     bottom: 0%;
     display: flex;
     justify-content: flex-end;
@@ -107,8 +152,8 @@ h2 {
     margin: 16px 17px 16px 17px;
 }
 
-#iceDiv img {
-    max-width: 250px;
+#iceDiv a {
+    font-size: 19px;
 }
 
 #setupDiv {
@@ -121,12 +166,20 @@ h2 {
     top: -2%;
 }
 
+#iceDiv img {
+    max-width: 250px;
+}
+
 #WaffelnDiv {
     /*border: 5px solid #ff0000;*/
     display: grid;
     grid-template-columns: auto auto;
     background: transparent;
     width: 100%;
+}
+
+#WaffelnDiv img {
+    max-width: 250px;
 }
 
 #EisDiv {
@@ -137,12 +190,20 @@ h2 {
     width: 100%;
 }
 
+#EisDiv img {
+    max-width: 300px;
+}
+
 #StecksachenDiv {
     /*border: 5px solid #ff0000;*/
     display: grid;
     grid-template-columns: auto auto;
     background: transparent;
     width: 100%;
+}
+
+#StecksachenDiv img {
+    max-width: 300px;
 }
 
 #SosenDiv {
@@ -153,6 +214,10 @@ h2 {
     width: 100%;
 }
 
+#SosenDiv img {
+    max-width: 300px;
+}
+
 #StreuselDiv {
     /*border: 5px solid #ff0000;*/
     display: grid;
@@ -161,22 +226,8 @@ h2 {
     width: 100%;
 }
 
-.pictureDiv {
-    max-width: 150px;
-    max-height: fit-content;
-    background: transparent;
-}
-
-.formatDiv {
-    border: 2px solid rgb(254, 253, 200);
-    box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
-    max-width: 450px;
-    max-height: 450px;
-    display: inline-table;
-    background: transparent;
-    color: black;
-    margin: auto;
-    margin: 32px 34px 32px 32px;
+#StreuselDiv img {
+    max-width: 300px;
 }
 
 #warenKorbArtikel {
@@ -215,6 +266,29 @@ h2 {
     width: 80%;
 }
 
+.pictureDiv {
+    max-width: 150px;
+    max-height: fit-content;
+    background: transparent;
+}
+
+.formatDiv {
+    border: 2px solid rgb(218, 212, 162);
+    box-shadow: 0pt 2px 5px rgb(182, 178, 146), 0px 0px 8px 5px rgb(145, 143, 116) inset;
+    max-width: 450px;
+    max-height: 450px;
+    display: inline-table;
+    background: transparent;
+    color: black;
+    margin: auto;
+    margin: 32px 34px 32px 34px;
+    padding: 16px 17px 16px 17px;
+}
+
+.formatDiv p {
+    font-size: 18px;
+}
+
 .formatDiv img {
     margin-left: auto;
     margin-right: auto;
@@ -238,10 +312,10 @@ h2 {
 }
 
 nav {
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    position: fixed;
+    right: 27%;
+    top: 0;
+    z-index: 99999;
 }
 
 #nav:after {
@@ -255,7 +329,8 @@ nav ul {
     padding: 0;
     margin: 0;
     list-style: none;
-    position: relative;
+    position: fixed;
+    z-index: 99999;
 }
 
 nav ul li {
@@ -267,6 +342,7 @@ nav ul li {
 }
 
 nav a {
+    z-index: 99999;
     display: block;
     padding: 0px 20px 0px 20px;
     color: lemonchiffon;
@@ -281,6 +357,24 @@ nav a:hover {
     border-radius: 10px;
     background-color: #000000;
     color: lemonchiffon;
+}
+
+@media screen and (max-width: 1900px) {
+    nav {
+        position: fixed;
+        right: 32%;
+        top: 0;
+        z-index: 99999;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    nav {
+        position: fixed;
+        right: 55%;
+        top: 0;
+        z-index: 99999;
+    }
 }
 
 @media screen and (max-width: 1350px) {
@@ -300,22 +394,41 @@ nav a:hover {
 }
 
 @media screen and (max-width: 933px) {
+    a {
+        font-size: 10px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 12px;
+    }
     nav {
-        max-width: 7%;
-        float: right;
+        position: absolute;
+        width: 10%;
+        left: 0%;
+        top: 0;
+        z-index: 99999;
     }
     nav a {
         border-radius: 10px;
         display: block;
-        padding: 0px 20px 0px 20px;
+        float: unset;
         color: rgba(255, 255, 255, 0.555);
         background-color: #000000a1;
         font-family: "Roboto";
-        font-size: 15px;
-        line-height: 25px;
+        font-size: 12px;
+        line-height: 15px;
         line-height: unset;
         text-align: center;
         text-decoration: none;
+    }
+    nav ul li {
+        margin: unset;
+        float: unset;
+        border: 1.5px solid lemonchiffon;
+        background-color: #00000080;
+        border-radius: 10px;
     }
     .toggle+a,
     .menu {
@@ -323,9 +436,9 @@ nav a:hover {
     }
     .toggle {
         display: block;
-        color: black;
+        color: rgb(255, 255, 255);
         font-size: 20px;
-        line-height: 30px;
+        line-height: 15px;
         text-align: center;
         text-decoration: none;
         border: none;
@@ -341,6 +454,96 @@ nav a:hover {
     }
     nav ul li {
         display: block;
+    }
+    #iceDiv {
+        /*border: 5px solid #ff0000;*/
+        height: 500px;
+        left: 0%;
+        width: 35%;
+        bottom: 0%;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        background: transparent;
+        position: fixed;
+        margin: 16px 17px 16px 17px;
+    }
+    #iceDiv p {
+        font-size: 8px;
+    }
+    #iceDiv a {
+        font-size: 8px;
+    }
+    #setupDiv {
+        /*border: 5px solid #ff0000;*/
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+        width: 60%;
+        right: 0%;
+        top: -2%;
+    }
+    #iceDiv img {
+        max-width: 100px;
+    }
+    #WaffelnDiv {
+        /*border: 5px solid #ff0000;*/
+        display: grid;
+        grid-template-columns: auto;
+        background: transparent;
         width: 100%;
+    }
+    #WaffelnDiv img {
+        max-width: 100px;
+    }
+    #EisDiv {
+        /*border: 5px solid #ff0000;*/
+        display: grid;
+        grid-template-columns: auto;
+        background: transparent;
+        width: 100%;
+    }
+    #EisDiv img {
+        max-width: 100px;
+    }
+    #StecksachenDiv {
+        /*border: 5px solid #ff0000;*/
+        display: grid;
+        grid-template-columns: auto;
+        background: transparent;
+        width: 100%;
+    }
+    #StecksachenDiv img {
+        max-width: 100px;
+    }
+    #SosenDiv {
+        /*border: 5px solid #ff0000;*/
+        display: grid;
+        grid-template-columns: auto;
+        background: transparent;
+        width: 100%;
+    }
+    #SosenDiv img {
+        max-width: 100px;
+    }
+    #StreuselDiv {
+        /*border: 5px solid #ff0000;*/
+        display: grid;
+        grid-template-columns: auto;
+        background: transparent;
+        width: 100%;
+    }
+    #StreuselDiv img {
+        max-width: 100px;
+    }
+    .formatDiv {
+        border: 2px solid rgb(218, 212, 162);
+        box-shadow: 0pt 2px 5px rgb(182, 178, 146), 0px 0px 8px 5px rgb(145, 143, 116) inset;
+        max-width: 450px;
+        max-height: 450px;
+        display: inline-table;
+        background: transparent;
+        color: black;
+        margin: auto;
     }
 }

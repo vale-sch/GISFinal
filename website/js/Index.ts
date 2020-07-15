@@ -12,13 +12,13 @@ namespace Eisdiele {
     let amount: number = 1;
     let eis: Eis;
     let constantNumber: number;
-    let articleCounter: number;
+    export let articleCounter: number;
     window.addEventListener("load", init);
     appendFunction();
 
     async function init(_event: Event): Promise<void> {
         await communicate("eisArtikel.json");
-        
+
         theIceCreator();
 
     }
@@ -83,6 +83,8 @@ namespace Eisdiele {
 
             let beschreibung: HTMLParagraphElement = document.createElement("p");
             beschreibung.setAttribute("class", "text");
+            let name: HTMLParagraphElement = document.createElement("p");
+            name.setAttribute("class", "text");
             let preis: HTMLParagraphElement = document.createElement("p");
             preis.setAttribute("class", "text");
 
@@ -92,6 +94,7 @@ namespace Eisdiele {
 
 
             formatDiv.appendChild(img);
+            formatDiv.appendChild(name).innerHTML = jsonObj[index].name;
             formatDiv.appendChild(beschreibung).innerHTML = "-->" + jsonObj[index].beschreibung;
             formatDiv.appendChild(preis).innerHTML = "Kosten pro Stück: " + jsonObj[index].preis + "€";
             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
@@ -111,6 +114,7 @@ namespace Eisdiele {
         amount++;
         this.stück = amount;
         pushToLocalStorage(this);
+        onClickBasket();
         onClickclearIceDiv(iceDiv);
     }
     function pushToLocalStorage(_eis: Eis): void {
@@ -119,6 +123,7 @@ namespace Eisdiele {
         if (_eis.stück > 0) {
             localStorage.setItem(_eis.stück.toString(), inhalt);
         } else { localStorage.setItem(_eis.stück.toString(), inhalt); }
+        
 
     }
     function theIceCreator(): void {
@@ -141,10 +146,12 @@ namespace Eisdiele {
             img.setAttribute("src", eis.image);
 
 
-            let informationTag: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
+            let informationTag: HTMLAnchorElement = <HTMLAnchorElement>document.createElement("a");
+            informationTag.setAttribute("class", "fas fa-times");
+            informationTag.setAttribute("href", "#fas fa-times");
 
 
-            informationTag.addEventListener("click", onClickDeleteStorage.bind(eis));
+            informationTag.addEventListener("click", onClickDeleteThis.bind(eis));
 
             let pictureDiv: HTMLDivElement;
             pictureDiv = document.createElement("div");
@@ -157,14 +164,14 @@ namespace Eisdiele {
 
                 img.style.position = "fixed";
                 img.style.bottom = "0%";
-                img.style.left = "10%";
+                img.style.left = "13%";
                 pictureDiv.appendChild(img);
             }
             else if (eis.kategorie == "Eis") {
                 if (eis.stück == 2) {
                     console.log("BEdingung eis.stück = 2");
                     img.style.position = "fixed";
-                    img.style.left += "10%";
+                    img.style.left += "13%";
                     img.style.bottom += "300px";
                     pictureDiv.appendChild(img);
 
@@ -173,7 +180,7 @@ namespace Eisdiele {
 
                     console.log("constant: " + constantNumber);
                     img.style.position = "fixed";
-                    img.style.left += ("10%");
+                    img.style.left += ("13%");
                     //img.style.left = - (index * 7) * 49 + "px";
                     img.style.bottom += (eis.stück * 95) + 120 + "px";
                     //img.style.bottom = "-100px";
@@ -184,7 +191,7 @@ namespace Eisdiele {
             }
             if (eis.kategorie == "Stecksachen") {
                 img.style.position = "fixed";
-                img.style.left += ("10%");
+                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 100) + 300 + "px";
                 let rotateNumber: number = index * 3;
                 img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
@@ -192,13 +199,13 @@ namespace Eisdiele {
             }
             if (eis.kategorie == "Streusel") {
                 img.style.position = "fixed";
-                img.style.left += ("10%");
+                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
                 pictureDiv.appendChild(img);
             }
             if (eis.kategorie == "Soßen") {
                 img.style.position = "fixed";
-                img.style.left += ("10%");
+                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
             }
@@ -221,7 +228,7 @@ namespace Eisdiele {
             basketLink.style.textDecorationColor = "lila";
             basketLink.style.lineHeight = "50px";
             iceDiv.appendChild(basketLink).innerHTML = " In den Warenkorb!";
-            iceDiv.addEventListener("click", onClickBasket.bind(basketLink));
+            basketLink.addEventListener("click", onClickBasket.bind(basketLink));
         }
 
         console.log("------localstorage-------");
@@ -235,11 +242,18 @@ namespace Eisdiele {
         localStorage.clear();
         location.reload();
     }
+    function onClickDeleteThis( this: Eis , _click: Event): void {
+        localStorage.removeItem(this.stück.toString());
+        amount = localStorage.length;
+        console.log("amount: " + amount);
+        onClickclearIceDiv(iceDiv);
+    }
 
     function onClickclearIceDiv(_iceDiv: HTMLDivElement): void {
 
         iceDiv.innerHTML = "";
-        theIceCreator();
+        if (localStorage.length > 0) { theIceCreator(); }
+
     }
     function onClickBasket(): void {
         articleCounter = localStorage.length;
@@ -249,10 +263,12 @@ namespace Eisdiele {
         if (articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");
             basketNumber.innerHTML = "" + articleCounter;
+            //localStorage.clear();
         }
         else {
             basketNumber.innerHTML = "";
         }
+
     }
 
 

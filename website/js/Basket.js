@@ -12,6 +12,7 @@ var Eisdiele;
         appendHTML();
         generateBasketArticle();
         generateContentInForm();
+        onClickBasket();
     }
     function appendHTML() {
         basketArticleDiv = document.getElementById("warenKorbArtikel");
@@ -83,8 +84,8 @@ var Eisdiele;
         preisInput.style.display = "none";
     }
     async function onClickButtonStoreData(_click) {
-        //let url: string = "http://localhost:8100";
-        let url = "https://compaktdisk.herokuapp.com";
+        // let url: string = "http://localhost:8100";
+        let url = "https://icecreamforyou.herokuapp.com";
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
@@ -96,6 +97,20 @@ var Eisdiele;
     function onClickDeleteStorage(_click) {
         localStorage.removeItem(this.stück.toString());
         location.reload();
+    }
+    function onClickBasket() {
+        Eisdiele.articleCounter = localStorage.length;
+        console.log("HALLLLO");
+        let basketNumber = document.querySelector("li:last-child");
+        basketNumber.setAttribute("id", "basketNumber");
+        if (Eisdiele.articleCounter > 0) {
+            basketNumber.setAttribute("id", "basketNumber");
+            basketNumber.innerHTML = "" + Eisdiele.articleCounter;
+            //localStorage.clear();
+        }
+        else {
+            basketNumber.innerHTML = "";
+        }
     }
 })(Eisdiele || (Eisdiele = {}));
 //# sourceMappingURL=Basket.js.map

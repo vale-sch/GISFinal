@@ -13,7 +13,6 @@ var Eisdiele;
     let amount = 1;
     let eis;
     let constantNumber;
-    let articleCounter;
     window.addEventListener("load", init);
     appendFunction();
     async function init(_event) {
@@ -71,12 +70,15 @@ var Eisdiele;
             img.setAttribute("src", Eisdiele.jsonObj[index].image);
             let beschreibung = document.createElement("p");
             beschreibung.setAttribute("class", "text");
+            let name = document.createElement("p");
+            name.setAttribute("class", "text");
             let preis = document.createElement("p");
             preis.setAttribute("class", "text");
             let button = document.createElement("button");
             button.setAttribute("class", "creationButton");
             button.addEventListener("click", onClickCreate.bind(Eisdiele.jsonObj[index]));
             formatDiv.appendChild(img);
+            formatDiv.appendChild(name).innerHTML = Eisdiele.jsonObj[index].name;
             formatDiv.appendChild(beschreibung).innerHTML = "-->" + Eisdiele.jsonObj[index].beschreibung;
             formatDiv.appendChild(preis).innerHTML = "Kosten pro Stück: " + Eisdiele.jsonObj[index].preis + "€";
             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
@@ -95,6 +97,7 @@ var Eisdiele;
         amount++;
         this.stück = amount;
         pushToLocalStorage(this);
+        onClickBasket();
         onClickclearIceDiv(iceDiv);
     }
     function pushToLocalStorage(_eis) {
@@ -117,8 +120,10 @@ var Eisdiele;
             eis = JSON.parse(jsonString);
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
-            let informationTag = document.createElement("p");
-            informationTag.addEventListener("click", onClickDeleteStorage.bind(eis));
+            let informationTag = document.createElement("a");
+            informationTag.setAttribute("class", "fas fa-times");
+            informationTag.setAttribute("href", "#fas fa-times");
+            informationTag.addEventListener("click", onClickDeleteThis.bind(eis));
             let pictureDiv;
             pictureDiv = document.createElement("div");
             pictureDiv.setAttribute("class", "pictureDiv");
@@ -127,14 +132,14 @@ var Eisdiele;
             if (eis.kategorie == "Waffel") {
                 img.style.position = "fixed";
                 img.style.bottom = "0%";
-                img.style.left = "10%";
+                img.style.left = "13%";
                 pictureDiv.appendChild(img);
             }
             else if (eis.kategorie == "Eis") {
                 if (eis.stück == 2) {
                     console.log("BEdingung eis.stück = 2");
                     img.style.position = "fixed";
-                    img.style.left += "10%";
+                    img.style.left += "13%";
                     img.style.bottom += "300px";
                     pictureDiv.appendChild(img);
                 }
@@ -142,7 +147,7 @@ var Eisdiele;
                     console.log("Eis");
                     console.log("constant: " + constantNumber);
                     img.style.position = "fixed";
-                    img.style.left += ("10%");
+                    img.style.left += ("13%");
                     //img.style.left = - (index * 7) * 49 + "px";
                     img.style.bottom += (eis.stück * 95) + 120 + "px";
                     //img.style.bottom = "-100px";
@@ -151,7 +156,7 @@ var Eisdiele;
             }
             if (eis.kategorie == "Stecksachen") {
                 img.style.position = "fixed";
-                img.style.left += ("10%");
+                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 100) + 300 + "px";
                 let rotateNumber = index * 3;
                 img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
@@ -159,13 +164,13 @@ var Eisdiele;
             }
             if (eis.kategorie == "Streusel") {
                 img.style.position = "fixed";
-                img.style.left += ("10%");
+                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
                 pictureDiv.appendChild(img);
             }
             if (eis.kategorie == "Soßen") {
                 img.style.position = "fixed";
-                img.style.left += ("10%");
+                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
             }
@@ -187,7 +192,7 @@ var Eisdiele;
             basketLink.style.textDecorationColor = "lila";
             basketLink.style.lineHeight = "50px";
             iceDiv.appendChild(basketLink).innerHTML = " In den Warenkorb!";
-            iceDiv.addEventListener("click", onClickBasket.bind(basketLink));
+            basketLink.addEventListener("click", onClickBasket.bind(basketLink));
         }
         console.log("------localstorage-------");
         console.log(localStorage);
@@ -196,18 +201,27 @@ var Eisdiele;
         localStorage.clear();
         location.reload();
     }
+    function onClickDeleteThis(_click) {
+        localStorage.removeItem(this.stück.toString());
+        amount = localStorage.length;
+        console.log("amount: " + amount);
+        onClickclearIceDiv(iceDiv);
+    }
     function onClickclearIceDiv(_iceDiv) {
         iceDiv.innerHTML = "";
-        theIceCreator();
+        if (localStorage.length > 0) {
+            theIceCreator();
+        }
     }
     function onClickBasket() {
-        articleCounter = localStorage.length;
+        Eisdiele.articleCounter = localStorage.length;
         console.log("HALLLLO");
         let basketNumber = document.querySelector("li:last-child");
         basketNumber.setAttribute("id", "basketNumber");
-        if (articleCounter > 0) {
+        if (Eisdiele.articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");
-            basketNumber.innerHTML = "" + articleCounter;
+            basketNumber.innerHTML = "" + Eisdiele.articleCounter;
+            //localStorage.clear();
         }
         else {
             basketNumber.innerHTML = "";
