@@ -104,6 +104,7 @@ var Eisdiele;
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
+                console.log("Nur eine Waffel du kranker Sack!");
                 return;
             }
         }
