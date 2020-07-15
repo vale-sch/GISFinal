@@ -174,22 +174,8 @@ var Eisdiele;
                 pictureDiv.appendChild(img);
             }
         }
-        if (localStorage.length > 0) {
-            let tryAgain;
-            tryAgain = document.createElement("a");
-            tryAgain.setAttribute("class", "fas fa-redo-alt");
-            tryAgain.setAttribute("href", "#fas fa-redo-alt");
-            tryAgain.style.textAlign = "right";
-            tryAgain.style.textDecorationColor = "lila";
-            iceDiv.appendChild(tryAgain).innerHTML = " New Creation";
-            tryAgain.addEventListener("click", onClickDeleteStorage.bind(tryAgain));
-        }
         console.log("------localstorage-------");
         console.log(localStorage);
-    }
-    function onClickDeleteStorage() {
-        localStorage.clear();
-        location.reload();
     }
     function onClickDeleteThis(_click) {
         localStorage.removeItem(this.stück.toString());

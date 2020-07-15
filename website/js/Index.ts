@@ -199,26 +199,11 @@ namespace Eisdiele {
             }
 
         }
-        if (localStorage.length > 0) {
-            let tryAgain: HTMLAnchorElement;
-            tryAgain = document.createElement("a");
-            tryAgain.setAttribute("class", "fas fa-redo-alt");
-            tryAgain.setAttribute("href", "#fas fa-redo-alt");
-            tryAgain.style.textAlign = "right";
-            tryAgain.style.textDecorationColor = "lila";
-            iceDiv.appendChild(tryAgain).innerHTML = " New Creation";
-            tryAgain.addEventListener("click", onClickDeleteStorage.bind(tryAgain));
-
-        }
-
+       
         console.log("------localstorage-------");
         console.log(localStorage);
     }
 
-    function onClickDeleteStorage(): void {
-        localStorage.clear();
-        location.reload();
-    }
     function onClickDeleteThis(this: Eis, _click: Event): void {
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
