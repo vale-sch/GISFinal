@@ -101,12 +101,15 @@ var Eisdiele;
     }
     function pushToLocalStorage(_eis) {
         let inhalt = JSON.stringify(_eis);
-        if (_eis.stück > 0) {
-            localStorage.setItem(_eis.stück.toString(), inhalt);
+        if (localStorage.length >= 1) {
+            if (_eis.name == "Waffel") {
+                let h3WaffelText = document.createElement("h3");
+                h3WaffelText.style.textAlign = "center";
+                setupDiv.appendChild(h3WaffelText).innerHTML = "Nur eine Waffel du kranker Sack!";
+                return;
+            }
         }
-        else {
-            localStorage.setItem(_eis.stück.toString(), inhalt);
-        }
+        localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator() {
         if (localStorage.length > 0) {

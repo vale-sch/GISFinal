@@ -63,11 +63,11 @@ var Eisdiele;
             nameLabel.setAttribute("for", "Bestellung:");
             let nameInput = document.createElement("input");
             nameInput.setAttribute("name", "Bestellung");
-            nameInput.setAttribute("value", eis.name);
-            form.appendChild(nameLabel).innerHTML = eis.name;
-            form.appendChild(nameInput).innerHTML = eis.name;
-            nameLabel.style.display = "none";
-            nameInput.style.display = "none";
+            nameInput.setAttribute("value", eis.name[eis.stück]);
+            form.appendChild(nameLabel).innerHTML = eis.name[eis.stück];
+            form.appendChild(nameInput).innerHTML = eis.name[eis.stück];
+            // nameLabel.style.display = "none";
+            // nameInput.style.display = "none";
         }
         let preisLabel = document.createElement("label");
         preisLabel.setAttribute("for", "Gesamtpreis");
@@ -76,8 +76,8 @@ var Eisdiele;
         preisInput.setAttribute("value", (Math.round((countPrice + Number.EPSILON) * 100) / 100).toString());
         form.appendChild(preisLabel).innerHTML = "Gesamtpreis: ";
         form.appendChild(preisInput).innerHTML = Math.round((countPrice + Number.EPSILON) * 100) / 100 + "";
-        preisLabel.style.display = "none";
-        preisInput.style.display = "none";
+        // preisLabel.style.display = "none";
+        //preisInput.style.display = "none";
     }
     async function onClickButtonStoreData(_click) {
         // let url: string = "http://localhost:8100";

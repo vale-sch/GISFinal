@@ -76,12 +76,12 @@
             nameLabel.setAttribute("for", "Bestellung:");
             let nameInput: HTMLInputElement = document.createElement("input");
             nameInput.setAttribute("name", "Bestellung");
-            nameInput.setAttribute("value", eis.name);
+            nameInput.setAttribute("value", eis.name[eis.stück]);
             
-            form.appendChild(nameLabel).innerHTML = eis.name;
-            form.appendChild(nameInput).innerHTML =  eis.name;
-            nameLabel.style.display = "none";
-            nameInput.style.display = "none";
+            form.appendChild(nameLabel).innerHTML = eis.name[eis.stück];
+            form.appendChild(nameInput).innerHTML =  eis.name[eis.stück];
+           // nameLabel.style.display = "none";
+           // nameInput.style.display = "none";
 
         }
         let preisLabel: HTMLLabelElement = document.createElement("label");
@@ -92,8 +92,8 @@
         
         form.appendChild(preisLabel).innerHTML = "Gesamtpreis: ";
         form.appendChild(preisInput).innerHTML = Math.round((countPrice + Number.EPSILON) * 100) / 100 + "";
-        preisLabel.style.display = "none";
-        preisInput.style.display = "none";
+       // preisLabel.style.display = "none";
+        //preisInput.style.display = "none";
        
         }
 
