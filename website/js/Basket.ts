@@ -78,8 +78,8 @@ namespace Eisdiele {
             nameInput.setAttribute("name", "Bestellung");
             nameInput.setAttribute("value", index.toString() + eis.name);
 
-            form.appendChild(nameLabel).innerHTML = index.toString() + eis.name;
-            form.appendChild(nameInput).innerHTML = index.toString() + eis.name;
+            form.appendChild(nameLabel).innerHTML = articleKey + eis.name;
+            form.appendChild(nameInput).innerHTML = articleKey + eis.name;
             nameLabel.style.display = "none";
             nameInput.style.display = "none";
 
