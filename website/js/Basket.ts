@@ -1,4 +1,4 @@
- namespace Eisdiele {
+namespace Eisdiele {
 
     let eis: Eis;
     let basketArticleDiv: HTMLDivElement;
@@ -76,12 +76,12 @@
             nameLabel.setAttribute("for", "Bestellung:");
             let nameInput: HTMLInputElement = document.createElement("input");
             nameInput.setAttribute("name", "Bestellung");
-            nameInput.setAttribute("value", eis.name[eis.stück]);
-            
-            form.appendChild(nameLabel).innerHTML = eis.name[eis.stück];
-            form.appendChild(nameInput).innerHTML =  eis.name[eis.stück];
-           // nameLabel.style.display = "none";
-           // nameInput.style.display = "none";
+            nameInput.setAttribute("value", index + eis.name[index]);
+
+            form.appendChild(nameLabel).innerHTML = index + eis.name[index];
+            form.appendChild(nameInput).innerHTML = index + eis.name[index];
+            // nameLabel.style.display = "none";
+            // nameInput.style.display = "none";
 
         }
         let preisLabel: HTMLLabelElement = document.createElement("label");
@@ -89,28 +89,28 @@
         let preisInput: HTMLInputElement = document.createElement("input");
         preisInput.setAttribute("name", "Gesamtpreis");
         preisInput.setAttribute("value", (Math.round((countPrice + Number.EPSILON) * 100) / 100).toString());
-        
+
         form.appendChild(preisLabel).innerHTML = "Gesamtpreis: ";
         form.appendChild(preisInput).innerHTML = Math.round((countPrice + Number.EPSILON) * 100) / 100 + "";
-       // preisLabel.style.display = "none";
+        // preisLabel.style.display = "none";
         //preisInput.style.display = "none";
-       
-        }
+
+    }
 
     async function onClickButtonStoreData(_click: MouseEvent): Promise<void> {
-        
-       // let url: string = "http://localhost:8100";
+
+        // let url: string = "http://localhost:8100";
         let url: string = "https://icecreamforyou.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "/storeData";
         url += "?" + query.toString();
-        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement> document.createElement("h1");
+        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h1");
         informationDiv.appendChild(h3TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
 
         let response: Response = await fetch(url);
-       
+
         localStorage.clear();
         basketArticleDiv.innerHTML = "";
         console.log(response);

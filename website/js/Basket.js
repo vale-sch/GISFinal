@@ -63,9 +63,9 @@ var Eisdiele;
             nameLabel.setAttribute("for", "Bestellung:");
             let nameInput = document.createElement("input");
             nameInput.setAttribute("name", "Bestellung");
-            nameInput.setAttribute("value", eis.name[eis.stück]);
-            form.appendChild(nameLabel).innerHTML = eis.name[eis.stück];
-            form.appendChild(nameInput).innerHTML = eis.name[eis.stück];
+            nameInput.setAttribute("value", index + eis.name[index]);
+            form.appendChild(nameLabel).innerHTML = index + eis.name[index];
+            form.appendChild(nameInput).innerHTML = index + eis.name[index];
             // nameLabel.style.display = "none";
             // nameInput.style.display = "none";
         }
