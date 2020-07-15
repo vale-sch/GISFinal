@@ -23,10 +23,8 @@ var Eisdiele;
         // url += "/";
         url += "/receive";
         url += "?" + query.toString();
-        //console.log(url);
         let response = await fetch(url);
         let orders = await response.json();
-        console.log("order: " + orders);
         let out = document.getElementById("output");
         out.innerHTML = "";
         for (let order of orders) {

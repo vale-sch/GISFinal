@@ -1,5 +1,3 @@
-
-
 namespace Eisdiele {
 
     export interface Orders {
@@ -11,9 +9,11 @@ namespace Eisdiele {
         Bestellung: string[];
         Gesamtpreis: string;
     }
+
     let getButton: HTMLButtonElement;
     let output: HTMLDivElement;
     let getDiv: HTMLDivElement;
+
     function init(): void {
         output = <HTMLDivElement>document.getElementById("orders");
         getDiv = <HTMLDivElement>document.getElementById("getButton");
@@ -26,8 +26,6 @@ namespace Eisdiele {
 
 
     }
-
-
     init();
     async function onClickButtonReceive(_click: Event): Promise<void> {
 
@@ -41,19 +39,15 @@ namespace Eisdiele {
         url += "/receive";
         url += "?" + query.toString();
 
-        //console.log(url);
         let response: Response = await fetch(url);
         let orders: Orders[] = await response.json();
 
-        console.log("order: " + orders);
         let out: HTMLDivElement = <HTMLDivElement>document.getElementById("output")!;
         out.innerHTML = "";
         for (let order of orders) {
             console.log("order:" + order);
             out.appendChild(createOrder(order));
         }
-
-
     }
     function createOrder(_order: Orders): HTMLElement {
 
@@ -97,7 +91,6 @@ namespace Eisdiele {
 
         let response: Response = await fetch(url);
         console.log(await response.json());
-
         await onClickButtonReceive(_e);
     }
 }

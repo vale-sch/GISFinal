@@ -34,8 +34,6 @@ export namespace Eisdiele {
   server.addListener("listening", handleListen);
   server.listen(port);
 
-
-
   startServer(port);
   connectToDatabase(databaseUrl);
 
@@ -86,41 +84,38 @@ export namespace Eisdiele {
     let _url: url.UrlWithParsedQuery = url.parse(adresse, true);
     let pathname: string = <string>_url.pathname;
 
-
     //Adresse parsen (umwandeln):
-
     if (_request.url) {
       if (pathname == "/receive") {
         await receiveJSONObj(_response, await receiveDatas(_response));
-        console.log("received!");
+        console.log("Received all Orders!");
         _response.end();
 
       }
       if (pathname == "/storeData") {
 
         storeDatas(_url.query);
+        console.log("Order stored!");
         _response.end();
       }
       if (pathname == "/deleteOne") {
-        console.log("delteone");
+        console.log("Deleted this one!");
         await receiveJSONObj(_response, await removeOne(_url.query));
         _response.end();
       }
     }
-    console.log("Response successful");
+    console.log("Response of Data Server successful");
 
   }
 
   async function storeDatas(_datas: Data): Promise<void> {
     await datas.insertOne(_datas);
-    console.log("Insert angekommen!");
 
   }
   async function receiveDatas(_response: Http.ServerResponse): Promise<Eisdiele.Orders[]> {
     let cursur: Mongo.Cursor<Eisdiele.Orders> = datas.find();
     // tslint:disable-next-line: no-any
     let orders: any = await cursur.toArray();
-    console.log(orders);
     return await orders;
 
   }
@@ -128,14 +123,12 @@ export namespace Eisdiele {
   // tslint:disable-next-line: no-any
   async function receiveJSONObj(_response: Http.ServerResponse, _result: any): Promise<void> {
     _response.setHeader("content-type", "application/json");
-
-    console.log(JSON.stringify(await _result));
     _response.write(JSON.stringify(await _result));
   }
   export async function removeOne(_query: ParsedUrlQuery): Promise<Mongo.DeleteWriteOpResultObject> {
     let id: string = <string>_query["id"];
     let objID: Mongo.ObjectId = new Mongo.ObjectId(id);
-    console.log("remove", id);
+    console.log("removed ID: ", id);
     return await datas.deleteOne({ "_id": objID });
   }
 }

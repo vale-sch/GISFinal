@@ -44,8 +44,6 @@
             button.addEventListener("click", onClickDeleteStorage.bind(eis));
 
             countPrice += eis.preis;
-            console.log(eis.preis);
-            console.log(countPrice);
 
             formatDiv.appendChild(img);
 
@@ -54,7 +52,6 @@
             formatDiv.appendChild(button).innerHTML = "Delete this";
 
         }
-        console.log("countPrixe: " + countPrice);
         totalPrice = <HTMLParagraphElement>document.createElement("h2");
         totalPrice.style.textAlign = "left";
         informationDiv.appendChild(totalPrice).innerHTML = "\xa0\xa0" + Math.round((countPrice + Number.EPSILON) * 100) / 100 + "€";
@@ -87,7 +84,6 @@
             nameInput.style.display = "none";
 
         }
-        console.log("countprice: " + countPrice);
         let preisLabel: HTMLLabelElement = document.createElement("label");
         preisLabel.setAttribute("for", "Gesamtpreis");
         let preisInput: HTMLInputElement = document.createElement("input");
@@ -114,15 +110,14 @@
 
         console.log(response);
 
-
     }
     function onClickDeleteStorage(this: Eis, _click: MouseEvent): void {
+        console.log("removedItem" + this.stück.toString());
         localStorage.removeItem(this.stück.toString());
         location.reload();
     }
     function onClickBasket(): void {
         articleCounter = localStorage.length;
-        console.log("HALLLLO");
         let basketNumber: HTMLLIElement = <HTMLLIElement>document.querySelector("li:last-child");
         basketNumber.setAttribute("id", "basketNumber");
         if (articleCounter > 0) {

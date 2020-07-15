@@ -37,14 +37,11 @@ var Eisdiele;
             button.setAttribute("class", "creationButton");
             button.addEventListener("click", onClickDeleteStorage.bind(eis));
             countPrice += eis.preis;
-            console.log(eis.preis);
-            console.log(countPrice);
             formatDiv.appendChild(img);
             formatDiv.appendChild(beschreibung).innerHTML = "-->" + eis.beschreibung;
             formatDiv.appendChild(preis).innerHTML = "Kosten pro Stück: " + eis.preis + "€";
             formatDiv.appendChild(button).innerHTML = "Delete this";
         }
-        console.log("countPrixe: " + countPrice);
         totalPrice = document.createElement("h2");
         totalPrice.style.textAlign = "left";
         informationDiv.appendChild(totalPrice).innerHTML = "\xa0\xa0" + Math.round((countPrice + Number.EPSILON) * 100) / 100 + "€";
@@ -72,7 +69,6 @@ var Eisdiele;
             nameLabel.style.display = "none";
             nameInput.style.display = "none";
         }
-        console.log("countprice: " + countPrice);
         let preisLabel = document.createElement("label");
         preisLabel.setAttribute("for", "Gesamtpreis");
         let preisInput = document.createElement("input");
@@ -95,12 +91,12 @@ var Eisdiele;
         console.log(response);
     }
     function onClickDeleteStorage(_click) {
+        console.log("removedItem" + this.stück.toString());
         localStorage.removeItem(this.stück.toString());
         location.reload();
     }
     function onClickBasket() {
         Eisdiele.articleCounter = localStorage.length;
-        console.log("HALLLLO");
         let basketNumber = document.querySelector("li:last-child");
         basketNumber.setAttribute("id", "basketNumber");
         if (Eisdiele.articleCounter > 0) {

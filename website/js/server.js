@@ -64,42 +64,40 @@ var Eisdiele;
         if (_request.url) {
             if (pathname == "/receive") {
                 await receiveJSONObj(_response, await receiveDatas(_response));
-                console.log("received!");
+                console.log("Received all Orders!");
                 _response.end();
             }
             if (pathname == "/storeData") {
                 storeDatas(_url.query);
+                console.log("Order stored!");
                 _response.end();
             }
             if (pathname == "/deleteOne") {
-                console.log("delteone");
+                console.log("Deleted this one!");
                 await receiveJSONObj(_response, await removeOne(_url.query));
                 _response.end();
             }
         }
-        console.log("Response successful");
+        console.log("Response of Data Server successful");
     }
     async function storeDatas(_datas) {
         await datas.insertOne(_datas);
-        console.log("Insert angekommen!");
     }
     async function receiveDatas(_response) {
         let cursur = datas.find();
         // tslint:disable-next-line: no-any
         let orders = await cursur.toArray();
-        console.log(orders);
         return await orders;
     }
     // tslint:disable-next-line: no-any
     async function receiveJSONObj(_response, _result) {
         _response.setHeader("content-type", "application/json");
-        console.log(JSON.stringify(await _result));
         _response.write(JSON.stringify(await _result));
     }
     async function removeOne(_query) {
         let id = _query["id"];
         let objID = new Mongo.ObjectId(id);
-        console.log("remove", id);
+        console.log("removed ID: ", id);
         return await datas.deleteOne({ "_id": objID });
     }
     Eisdiele.removeOne = removeOne;

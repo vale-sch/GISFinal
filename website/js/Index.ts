@@ -18,9 +18,7 @@ namespace Eisdiele {
 
     async function init(_event: Event): Promise<void> {
         await communicate("eisArtikel.json");
-
         theIceCreator();
-
     }
 
     async function communicate(_url: RequestInfo): Promise<void> {
@@ -41,17 +39,14 @@ namespace Eisdiele {
 
     }
 
-
     function generateIce(): void {
         for (let index: number = 0; index < jsonObj.length; index++) {
 
             if (jsonObj[index].kategorie == "Waffel") {
-
                 formatDiv = document.createElement("div");
                 formatDiv.setAttribute("class", "formatDiv");
                 setupDiv.appendChild(waffelDiv);
                 waffelDiv.appendChild(formatDiv);
-
             }
             if (jsonObj[index].kategorie == "Eis") {
                 formatDiv = document.createElement("div");
@@ -92,7 +87,6 @@ namespace Eisdiele {
             button.setAttribute("class", "creationButton");
             button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
 
-
             formatDiv.appendChild(img);
             formatDiv.appendChild(name).innerHTML = jsonObj[index].name;
             formatDiv.appendChild(beschreibung).innerHTML = "-->" + jsonObj[index].beschreibung;
@@ -104,7 +98,6 @@ namespace Eisdiele {
         if (localStorage.length > 0) {
             if (this.kategorie == "Eis") {
                 constantNumber = localStorage.length;
-                console.log("constantjo: " + constantNumber);
             }
         }
 
@@ -135,21 +128,16 @@ namespace Eisdiele {
 
 
         for (let index: number = 0; index <= localStorage.length - 1; index++) {
-
-
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
 
-
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
-
 
             let informationTag: HTMLAnchorElement = <HTMLAnchorElement>document.createElement("a");
             informationTag.setAttribute("class", "fas fa-times");
             informationTag.setAttribute("href", "#fas fa-times");
-
 
             informationTag.addEventListener("click", onClickDeleteThis.bind(eis));
 
@@ -158,7 +146,6 @@ namespace Eisdiele {
             pictureDiv.setAttribute("class", "pictureDiv");
             iceDiv.appendChild(pictureDiv);
             iceDiv.appendChild(informationTag).innerHTML = eis.stück + "." + "-" + eis.name;
-
 
             if (eis.kategorie == "Waffel") {
 
@@ -169,16 +156,12 @@ namespace Eisdiele {
             }
             else if (eis.kategorie == "Eis") {
                 if (eis.stück == 2) {
-                    console.log("BEdingung eis.stück = 2");
                     img.style.position = "fixed";
                     img.style.left += "13%";
                     img.style.bottom += "300px";
                     pictureDiv.appendChild(img);
 
                 } else {
-                    console.log("Eis");
-
-                    console.log("constant: " + constantNumber);
                     img.style.position = "fixed";
                     img.style.left += ("13%");
                     //img.style.left = - (index * 7) * 49 + "px";
@@ -235,9 +218,6 @@ namespace Eisdiele {
         console.log(localStorage);
     }
 
-
-
-
     function onClickDeleteStorage(): void {
         localStorage.clear();
         location.reload();
@@ -245,7 +225,6 @@ namespace Eisdiele {
     function onClickDeleteThis( this: Eis , _click: Event): void {
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
-        console.log("amount: " + amount);
         onClickclearIceDiv(iceDiv);
     }
 
@@ -257,7 +236,6 @@ namespace Eisdiele {
     }
     function onClickBasket(): void {
         articleCounter = localStorage.length;
-        console.log("HALLLLO");
         let basketNumber: HTMLLIElement = <HTMLLIElement>document.querySelector("li:last-child");
         basketNumber.setAttribute("id", "basketNumber");
         if (articleCounter > 0) {

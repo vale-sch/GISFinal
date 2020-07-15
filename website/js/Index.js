@@ -88,7 +88,6 @@ var Eisdiele;
         if (localStorage.length > 0) {
             if (this.kategorie == "Eis") {
                 constantNumber = localStorage.length;
-                console.log("constantjo: " + constantNumber);
             }
         }
         if (localStorage.length == 0) {
@@ -137,15 +136,12 @@ var Eisdiele;
             }
             else if (eis.kategorie == "Eis") {
                 if (eis.stück == 2) {
-                    console.log("BEdingung eis.stück = 2");
                     img.style.position = "fixed";
                     img.style.left += "13%";
                     img.style.bottom += "300px";
                     pictureDiv.appendChild(img);
                 }
                 else {
-                    console.log("Eis");
-                    console.log("constant: " + constantNumber);
                     img.style.position = "fixed";
                     img.style.left += ("13%");
                     //img.style.left = - (index * 7) * 49 + "px";
@@ -204,7 +200,6 @@ var Eisdiele;
     function onClickDeleteThis(_click) {
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
-        console.log("amount: " + amount);
         onClickclearIceDiv(iceDiv);
     }
     function onClickclearIceDiv(_iceDiv) {
@@ -215,7 +210,6 @@ var Eisdiele;
     }
     function onClickBasket() {
         Eisdiele.articleCounter = localStorage.length;
-        console.log("HALLLLO");
         let basketNumber = document.querySelector("li:last-child");
         basketNumber.setAttribute("id", "basketNumber");
         if (Eisdiele.articleCounter > 0) {
