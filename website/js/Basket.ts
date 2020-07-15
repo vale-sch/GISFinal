@@ -106,11 +106,11 @@
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "/storeData";
         url += "?" + query.toString();
+        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement> document.createElement("h1");
+        informationDiv.appendChild(h3TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
 
         let response: Response = await fetch(url);
-        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement> document.createElement("Sie haben die Bestellung erfolgreich abgegeben, eine Bestätigungs-Email wurde an Sie gesendet");
-   
-        informationDiv.appendChild(h3TextStore);
+       
         localStorage.clear();
         location.reload();
         console.log(response);
