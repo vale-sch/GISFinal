@@ -49,7 +49,7 @@ var Eisdiele;
         removeBtn.innerText = "Geld erhalten & Versendet";
         removeBtn.addEventListener("click", removeOne.bind(removeBtn));
         removeBtn.style.lineHeight = "25px";
-        output.appendChild(ordersDiv).innerHTML = " Bestellungs_Id: " + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname :" + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Eis-Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
+        output.appendChild(ordersDiv).innerHTML = " Bestellungs_Id: " + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname: " + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Eis-Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
         ordersDiv.appendChild(removeBtn);
         return ordersDiv;
     }

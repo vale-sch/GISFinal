@@ -90,10 +90,10 @@ var Eisdiele;
         let response = await fetch(url);
         localStorage.clear();
         basketArticleDiv.innerHTML = "";
-        let h3TextStore = document.createElement("h1");
-        h3TextStore.style.color = "red";
-        h3TextStore.style.textAlign = "center";
-        basketArticleDiv.appendChild(h3TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
+        let h2TextStore = document.createElement("h2");
+        h2TextStore.style.color = "lemonchiffon";
+        h2TextStore.style.textAlign = "center";
+        basketArticleDiv.appendChild(h2TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
         console.log(response);
     }
     function onClickDeleteStorage(_click) {
