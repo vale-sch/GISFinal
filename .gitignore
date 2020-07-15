@@ -3,3 +3,5 @@
 node_modules
 
 website/iceOrders/diagnostic.data/metrics.interim
+
+website/iceOrders/diagnostic.data/
