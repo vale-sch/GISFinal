@@ -100,7 +100,6 @@ namespace Eisdiele {
                 constantNumber = localStorage.length;
             }
         }
-
         if (localStorage.length == 0) {
             amount = 0;
         }
@@ -237,6 +236,8 @@ namespace Eisdiele {
     function onClickBasket(): void {
         articleCounter = localStorage.length;
         let basketNumber: HTMLLIElement = <HTMLLIElement>document.querySelector("li:last-child");
+        let h3TextBaskter: HTMLHeadElement = <HTMLHeadElement>document.createElement("h3");
+        iceDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben den Einkauf erfolgreich getätigt";
         basketNumber.setAttribute("id", "basketNumber");
         if (articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");

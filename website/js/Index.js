@@ -211,6 +211,8 @@ var Eisdiele;
     function onClickBasket() {
         Eisdiele.articleCounter = localStorage.length;
         let basketNumber = document.querySelector("li:last-child");
+        let h3TextBaskter = document.createElement("h3");
+        iceDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben den Einkauf erfolgreich getätigt";
         basketNumber.setAttribute("id", "basketNumber");
         if (Eisdiele.articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");
