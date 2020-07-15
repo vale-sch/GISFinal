@@ -90,7 +90,7 @@ var Eisdiele;
         let response = await fetch(url);
         localStorage.clear();
         basketArticleDiv.innerHTML = "";
-        let h3TextStore = document.createElement("h3");
+        let h3TextStore = document.createElement("h1");
         h3TextStore.style.color = "red";
         h3TextStore.style.textAlign = "center";
         basketArticleDiv.appendChild(h3TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";

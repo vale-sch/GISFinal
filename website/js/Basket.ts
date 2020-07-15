@@ -112,7 +112,7 @@ namespace Eisdiele {
 
         localStorage.clear();
         basketArticleDiv.innerHTML = "";
-        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h3");
+        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h1");
         h3TextStore.style.color = "red";
         h3TextStore.style.textAlign = "center";
 
