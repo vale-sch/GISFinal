@@ -107,7 +107,8 @@
         url += "/storeData";
         url += "?" + query.toString();
         let response: Response = await fetch(url);
-
+        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement> document.createElement("Sie haben die Bestellung erfolgreich abgegeben, eine Bestätigungs-Email wurde an Sie gesendet");
+        informationDiv.appendChild(h3TextStore);
         console.log(response);
 
     }
