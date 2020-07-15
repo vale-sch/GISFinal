@@ -5,7 +5,6 @@ var Eisdiele;
     let waffelDiv;
     let eisDiv;
     let sosenDiv;
-    let responsiveDiv;
     let stecksachenDiv;
     let streuselDiv;
     let formatDiv;
@@ -26,7 +25,6 @@ var Eisdiele;
         generateIce();
     }
     function appendFunction() {
-        responsiveDiv = document.getElementById("responsiveDiv");
         setupDiv = document.getElementById("setupDiv");
         waffelDiv = document.getElementById("WaffelnDiv");
         eisDiv = document.getElementById("EisDiv");
@@ -182,15 +180,6 @@ var Eisdiele;
             tryAgain.style.textDecorationColor = "lila";
             iceDiv.appendChild(tryAgain).innerHTML = " New Creation";
             tryAgain.addEventListener("click", onClickDeleteStorage.bind(tryAgain));
-            let basketLink;
-            basketLink = document.createElement("a");
-            basketLink.setAttribute("class", "fas fa-shopping-bag");
-            basketLink.setAttribute("href", "#fas fa-shopping-bag");
-            basketLink.style.textAlign = "right";
-            basketLink.style.textDecorationColor = "lila";
-            basketLink.style.lineHeight = "50px";
-            iceDiv.appendChild(basketLink).innerHTML = " In den Warenkorb!";
-            basketLink.addEventListener("click", onClickBasket.bind(basketLink));
         }
         console.log("------localstorage-------");
         console.log(localStorage);
@@ -213,10 +202,6 @@ var Eisdiele;
     function onClickBasket() {
         Eisdiele.articleCounter = localStorage.length;
         let basketNumber = document.querySelector("li:last-child");
-        let h3TextBaskter = document.createElement("h3");
-        h3TextBaskter.style.textAlign = "center";
-        h3TextBaskter.style.color = "red";
-        responsiveDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben die Kreation erfolgreich zum Warenkorb geschickt!";
         basketNumber.setAttribute("id", "basketNumber");
         if (Eisdiele.articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");

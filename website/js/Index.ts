@@ -4,7 +4,6 @@ namespace Eisdiele {
     let waffelDiv: HTMLDivElement;
     let eisDiv: HTMLDivElement;
     let sosenDiv: HTMLDivElement;
-    let responsiveDiv: HTMLDivElement;
     let stecksachenDiv: HTMLDivElement;
     let streuselDiv: HTMLDivElement;
     let formatDiv: HTMLDivElement;
@@ -29,7 +28,6 @@ namespace Eisdiele {
     }
 
     function appendFunction(): void {
-        responsiveDiv = <HTMLDivElement>document.getElementById("responsiveDiv");
         setupDiv = <HTMLDivElement>document.getElementById("setupDiv");
         waffelDiv = <HTMLDivElement>document.getElementById("WaffelnDiv");
         eisDiv = <HTMLDivElement>document.getElementById("EisDiv");
@@ -204,15 +202,7 @@ namespace Eisdiele {
             tryAgain.style.textDecorationColor = "lila";
             iceDiv.appendChild(tryAgain).innerHTML = " New Creation";
             tryAgain.addEventListener("click", onClickDeleteStorage.bind(tryAgain));
-            let basketLink: HTMLAnchorElement;
-            basketLink = document.createElement("a");
-            basketLink.setAttribute("class", "fas fa-shopping-bag");
-            basketLink.setAttribute("href", "#fas fa-shopping-bag");
-            basketLink.style.textAlign = "right";
-            basketLink.style.textDecorationColor = "lila";
-            basketLink.style.lineHeight = "50px";
-            iceDiv.appendChild(basketLink).innerHTML = " In den Warenkorb!";
-            basketLink.addEventListener("click", onClickBasket.bind(basketLink));
+            
         }
 
         console.log("------localstorage-------");
@@ -238,10 +228,6 @@ namespace Eisdiele {
     function onClickBasket(): void {
         articleCounter = localStorage.length;
         let basketNumber: HTMLLIElement = <HTMLLIElement>document.querySelector("li:last-child");
-        let h3TextBaskter: HTMLHeadElement = <HTMLHeadElement>document.createElement("h3");
-        h3TextBaskter.style.textAlign = "center";
-        h3TextBaskter.style.color = "red";
-        responsiveDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben die Kreation erfolgreich zum Warenkorb geschickt!";
         basketNumber.setAttribute("id", "basketNumber");
         if (articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");
