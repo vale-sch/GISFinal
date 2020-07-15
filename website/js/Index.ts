@@ -113,9 +113,7 @@ namespace Eisdiele {
         let inhalt: string = JSON.stringify(_eis);
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
-                let h3WaffelText: HTMLHeadingElement = <HTMLHeadingElement> document.createElement("h3");
-                h3WaffelText.style.textAlign = "center";
-                setupDiv.appendChild(h3WaffelText).innerHTML = "Nur eine Waffel du kranker Sack!";
+                amount = 1;
                 return;
             }
         }

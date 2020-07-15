@@ -103,9 +103,7 @@ var Eisdiele;
         let inhalt = JSON.stringify(_eis);
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
-                let h3WaffelText = document.createElement("h3");
-                h3WaffelText.style.textAlign = "center";
-                setupDiv.appendChild(h3WaffelText).innerHTML = "Nur eine Waffel du kranker Sack!";
+                amount = 1;
                 return;
             }
         }
