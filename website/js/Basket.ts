@@ -112,7 +112,7 @@
         let response: Response = await fetch(url);
        
         localStorage.clear();
-        location.reload();
+        basketArticleDiv.innerHTML = "";
         console.log(response);
 
     }

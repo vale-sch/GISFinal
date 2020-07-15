@@ -91,7 +91,7 @@ var Eisdiele;
         informationDiv.appendChild(h3TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
         let response = await fetch(url);
         localStorage.clear();
-        location.reload();
+        basketArticleDiv.innerHTML = "";
         console.log(response);
     }
     function onClickDeleteStorage(_click) {
