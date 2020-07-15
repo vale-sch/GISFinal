@@ -90,6 +90,8 @@ var Eisdiele;
         let response = await fetch(url);
         let h3TextStore = document.createElement("Sie haben die Bestellung erfolgreich abgegeben, eine Bestätigungs-Email wurde an Sie gesendet");
         informationDiv.appendChild(h3TextStore);
+        localStorage.clear();
+        location.reload();
         console.log(response);
     }
     function onClickDeleteStorage(_click) {
