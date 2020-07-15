@@ -212,7 +212,7 @@ var Eisdiele;
         Eisdiele.articleCounter = localStorage.length;
         let basketNumber = document.querySelector("li:last-child");
         let h3TextBaskter = document.createElement("h3");
-        h3TextBaskter.style.top = "0%";
+        h3TextBaskter.style.bottom = "90%";
         h3TextBaskter.style.float = "right";
         h3TextBaskter.style.color = "red";
         iceDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben die Kreation erfolgreich zum Warenkorb geschickt!";
