@@ -80,8 +80,8 @@ namespace Eisdiele {
 
             form.appendChild(nameLabel).innerHTML = index.toString() + eis.name;
             form.appendChild(nameInput).innerHTML = index.toString() + eis.name;
-            // nameLabel.style.display = "none";
-            // nameInput.style.display = "none";
+            nameLabel.style.display = "none";
+            nameInput.style.display = "none";
 
         }
         let preisLabel: HTMLLabelElement = document.createElement("label");
@@ -92,8 +92,8 @@ namespace Eisdiele {
 
         form.appendChild(preisLabel).innerHTML = "Gesamtpreis: ";
         form.appendChild(preisInput).innerHTML = Math.round((countPrice + Number.EPSILON) * 100) / 100 + "";
-        // preisLabel.style.display = "none";
-        //preisInput.style.display = "none";
+        preisLabel.style.display = "none";
+        preisInput.style.display = "none";
 
     }
 
@@ -106,7 +106,7 @@ namespace Eisdiele {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "/storeData";
         url += "?" + query.toString();
-        
+
 
         let response: Response = await fetch(url);
 
@@ -115,7 +115,7 @@ namespace Eisdiele {
         let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h3");
         h3TextStore.style.color = "red";
         h3TextStore.style.textAlign = "center";
-        
+
         basketArticleDiv.appendChild(h3TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
         console.log(response);
 
