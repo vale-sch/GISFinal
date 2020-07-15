@@ -90,6 +90,7 @@ var Eisdiele;
         let response = await fetch(url);
         localStorage.clear();
         basketArticleDiv.innerHTML = "";
+        informationDiv.innerHTML = "";
         let h2TextStore = document.createElement("h2");
         h2TextStore.style.color = "lemonchiffon";
         h2TextStore.style.textAlign = "center";
