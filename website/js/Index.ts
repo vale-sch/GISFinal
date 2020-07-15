@@ -4,6 +4,7 @@ namespace Eisdiele {
     let waffelDiv: HTMLDivElement;
     let eisDiv: HTMLDivElement;
     let sosenDiv: HTMLDivElement;
+    let responsiveDiv: HTMLDivElement;
     let stecksachenDiv: HTMLDivElement;
     let streuselDiv: HTMLDivElement;
     let formatDiv: HTMLDivElement;
@@ -28,6 +29,7 @@ namespace Eisdiele {
     }
 
     function appendFunction(): void {
+        responsiveDiv = <HTMLDivElement>document.getElementById("responsiveDiv");
         setupDiv = <HTMLDivElement>document.getElementById("setupDiv");
         waffelDiv = <HTMLDivElement>document.getElementById("WaffelnDiv");
         eisDiv = <HTMLDivElement>document.getElementById("EisDiv");
@@ -237,10 +239,9 @@ namespace Eisdiele {
         articleCounter = localStorage.length;
         let basketNumber: HTMLLIElement = <HTMLLIElement>document.querySelector("li:last-child");
         let h3TextBaskter: HTMLHeadElement = <HTMLHeadElement>document.createElement("h3");
-        h3TextBaskter.style.bottom = "90%";
-        h3TextBaskter.style.float = "right";
+        h3TextBaskter.style.textAlign = "center";
         h3TextBaskter.style.color = "red";
-        iceDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben die Kreation erfolgreich zum Warenkorb geschickt!";
+        responsiveDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben die Kreation erfolgreich zum Warenkorb geschickt!";
         basketNumber.setAttribute("id", "basketNumber");
         if (articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");

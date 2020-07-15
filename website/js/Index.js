@@ -5,6 +5,7 @@ var Eisdiele;
     let waffelDiv;
     let eisDiv;
     let sosenDiv;
+    let responsiveDiv;
     let stecksachenDiv;
     let streuselDiv;
     let formatDiv;
@@ -25,6 +26,7 @@ var Eisdiele;
         generateIce();
     }
     function appendFunction() {
+        responsiveDiv = document.getElementById("responsiveDiv");
         setupDiv = document.getElementById("setupDiv");
         waffelDiv = document.getElementById("WaffelnDiv");
         eisDiv = document.getElementById("EisDiv");
@@ -212,10 +214,9 @@ var Eisdiele;
         Eisdiele.articleCounter = localStorage.length;
         let basketNumber = document.querySelector("li:last-child");
         let h3TextBaskter = document.createElement("h3");
-        h3TextBaskter.style.bottom = "90%";
-        h3TextBaskter.style.float = "right";
+        h3TextBaskter.style.textAlign = "center";
         h3TextBaskter.style.color = "red";
-        iceDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben die Kreation erfolgreich zum Warenkorb geschickt!";
+        responsiveDiv.appendChild(h3TextBaskter).innerHTML = "Sie haben die Kreation erfolgreich zum Warenkorb geschickt!";
         basketNumber.setAttribute("id", "basketNumber");
         if (Eisdiele.articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");
