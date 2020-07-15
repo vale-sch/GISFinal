@@ -114,10 +114,10 @@ namespace Eisdiele {
         basketArticleDiv.innerHTML = "";
         informationDiv.innerHTML = "";
         let h2TextStore: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h2");
-        h2TextStore.style.color = "lemonchiffon";
+        h2TextStore.style.color = "#411f1f";
         h2TextStore.style.textAlign = "center";
 
-        basketArticleDiv.appendChild(h2TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
+        informationDiv.appendChild(h2TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
         console.log(response);
 
     }
