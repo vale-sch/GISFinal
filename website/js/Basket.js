@@ -50,7 +50,7 @@ var Eisdiele;
         let infoTag = document.createElement("p");
         infoTag.setAttribute("id", "infoTag");
         let confirmTag = document.createElement("p");
-        informationDiv.appendChild(confirmTag).innerHTML = "Wir senden Ihnen automatisch eine Bestätigungs Email, wo Sie die vollen Informationen zum Banktransfer finden";
+        informationDiv.appendChild(confirmTag).innerHTML = "Wir senden Ihnen automatisch eine Bestätigungs Email, dort finden Sie unsere Bankdaten um die Bestellung abzuschließen";
         informationDiv.appendChild(infoTag).innerHTML = "Mit dem Klick auf den Buttons, erklären Sie sich einverstanden mit den Shop AGB`s";
         informationDiv.appendChild(sendBuy).innerHTML = "Bezahlen";
     }
