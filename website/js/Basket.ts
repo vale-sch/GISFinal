@@ -106,7 +106,9 @@ namespace Eisdiele {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url += "/storeData";
         url += "?" + query.toString();
-        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h1");
+        let h3TextStore: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h3");
+        h3TextStore.style.color = "red";
+        h3TextStore.style.textAlign = "center";
         informationDiv.appendChild(h3TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
 
         let response: Response = await fetch(url);
