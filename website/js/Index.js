@@ -107,7 +107,7 @@ var Eisdiele;
         toppingText = document.createElement("p");
         waffelText.style.color = "red";
         toppingText.style.color = "red";
-        if (localStorage.length >= 1) {
+        if (localStorage.length == 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
@@ -132,7 +132,6 @@ var Eisdiele;
                 return;
             }
         }
-        iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
         //setupDiv.appendChild(waffelText).innerHTML = "";
         //setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
@@ -200,6 +199,7 @@ var Eisdiele;
                 pictureDiv.appendChild(img);
             }
         }
+        iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
         console.log("------localstorage-------");
         console.log(localStorage);
     }
