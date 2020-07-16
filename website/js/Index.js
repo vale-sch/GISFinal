@@ -137,8 +137,8 @@ var Eisdiele;
                 return;
             }
         }
-        setupDiv.appendChild(waffelText).innerHTML = "";
-        setupDiv.appendChild(toppingText).innerHTML = "";
+        //setupDiv.appendChild(waffelText).innerHTML = "";
+        //setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator() {
