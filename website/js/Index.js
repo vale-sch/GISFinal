@@ -110,7 +110,6 @@ var Eisdiele;
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
-                iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
                 return;
             }
@@ -120,7 +119,12 @@ var Eisdiele;
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
             }
+            else if (_eis.kategorie == "Eis") {
+                localStorage.setItem(_eis.stück.toString(), inhalt);
+                return;
+            }
         }
+        iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
         //setupDiv.appendChild(waffelText).innerHTML = "";
         //setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
