@@ -117,36 +117,42 @@ namespace Eisdiele {
         toppingText = <HTMLParagraphElement>document.createElement("p");
         waffelText.style.color = "red";
         toppingText.style.color = "red";
+        waffelText.style.top = "0";
+        toppingText.style.top = "0";
+        waffelText.style.fontWeight = "20px";
+        toppingText.style.fontWeight = "20px";
+
         if (localStorage.length == 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
+                iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
                 return;
             }
             if (_eis.kategorie == "Stecksachen") {
                 amount = 1;
-                iceDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                iceDiv.appendChild(toppingText).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
 
             }
             if (_eis.kategorie == "Streusel") {
                 amount = 1;
-                iceDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                iceDiv.appendChild(toppingText).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
 
-            } 
+            }
             if (_eis.kategorie == "Soßen") {
                 amount = 1;
-                iceDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                iceDiv.appendChild(toppingText).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
             }
         }
-        
-        //setupDiv.appendChild(waffelText).innerHTML = "";
-        //setupDiv.appendChild(toppingText).innerHTML = "";
+
+        setupDiv.appendChild(waffelText).innerHTML = "";
+        setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
 
@@ -227,7 +233,7 @@ namespace Eisdiele {
             }
 
         }
-        iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+
         console.log("------localstorage-------");
         console.log(localStorage);
     }
@@ -241,7 +247,8 @@ namespace Eisdiele {
     function onClickclearIceDiv(_iceDiv: HTMLDivElement): void {
 
         iceDiv.innerHTML = "";
-        if (localStorage.length > 0) { theIceCreator(); }
+        if (localStorage.length > 0)
+            theIceCreator();
 
     }
     function onClickBasket(): void {
