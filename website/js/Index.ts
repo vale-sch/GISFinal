@@ -12,6 +12,8 @@ namespace Eisdiele {
     let amount: number = 1;
     let eis: Eis;
     let constantNumber: number;
+    let waffelText: HTMLParagraphElement;
+    let toppingText: HTMLParagraphElement;
     export let articleCounter: number;
     window.addEventListener("load", init);
     appendFunction();
@@ -111,13 +113,26 @@ namespace Eisdiele {
     }
     function pushToLocalStorage(_eis: Eis): void {
         let inhalt: string = JSON.stringify(_eis);
+        waffelText = <HTMLParagraphElement>document.createElement("p");
+        toppingText = <HTMLParagraphElement>document.createElement("p");
+
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
-                console.log("Nur eine Waffel du kranker Sack!");
+                setupDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
                 return;
             }
+            if (_eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
+                amount = 1;
+                setupDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Tochter!");
+                return;
+
+            }
         }
+        setupDiv.appendChild(waffelText).innerHTML = "";
+        setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
 
@@ -198,7 +213,7 @@ namespace Eisdiele {
             }
 
         }
-       
+
         console.log("------localstorage-------");
         console.log(localStorage);
     }

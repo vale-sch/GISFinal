@@ -13,6 +13,8 @@ var Eisdiele;
     let amount = 1;
     let eis;
     let constantNumber;
+    let waffelText;
+    let toppingText;
     window.addEventListener("load", init);
     appendFunction();
     async function init(_event) {
@@ -101,13 +103,24 @@ var Eisdiele;
     }
     function pushToLocalStorage(_eis) {
         let inhalt = JSON.stringify(_eis);
+        waffelText = document.createElement("p");
+        toppingText = document.createElement("p");
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
-                console.log("Nur eine Waffel du kranker Sack!");
+                setupDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
+                return;
+            }
+            if (_eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
+                amount = 1;
+                setupDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Tochter!");
                 return;
             }
         }
+        setupDiv.appendChild(waffelText).innerHTML = "";
+        setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator() {
