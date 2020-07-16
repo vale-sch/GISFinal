@@ -104,34 +104,34 @@ var Eisdiele;
         let info3Text = document.createElement("h3");
         info3Text.style.color = "red";
         info3Text.style.top = "0";
-        if (localStorage.length >= 1) {
+        if (localStorage.length == 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
                 iceDiv.appendChild(info3Text).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
             }
+            if (_eis.kategorie == "Stecksachen") {
+                amount = 1;
+                iceDiv.appendChild(info3Text).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
+            }
+            if (_eis.kategorie == "Streusel") {
+                amount = 1;
+                iceDiv.appendChild(info3Text).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
+            }
+            if (_eis.kategorie == "Soßen") {
+                amount = 1;
+                iceDiv.appendChild(info3Text).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
+            }
         }
         else {
             localStorage.setItem(_eis.stück.toString(), inhalt);
+            iceDiv.appendChild(info3Text).innerHTML = "";
         }
         /* if (localStorage.length == 1) {
-             if (_eis.kategorie == "Stecksachen") {
-                 amount = 1;
-                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-                 return;
- 
-             }
-             if (_eis.kategorie == "Streusel") {
-                 amount = 1;
-                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-                 return;
- 
-             }
-             if (_eis.kategorie == "Soßen") {
-                 amount = 1;
-                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-                 return;
-             }
+            
          }*/
     }
     function theIceCreator() {
