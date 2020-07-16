@@ -111,44 +111,35 @@ namespace Eisdiele {
     }
     function pushToLocalStorage(_eis: Eis): void {
         let inhalt: string = JSON.stringify(_eis);
-        let info3Text: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h3");
-        info3Text.style.color = "red";
-        info3Text.style.top = "0";
-        if (localStorage.length == 1) {
+        if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
-                iceDiv.appendChild(info3Text).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
-
+                return;
             }
+
+        }
+        if (localStorage.length == 1) {
             if (_eis.kategorie == "Stecksachen") {
                 amount = 1;
-                iceDiv.appendChild(info3Text).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
+                return;
 
 
             }
             if (_eis.kategorie == "Streusel") {
                 amount = 1;
-                iceDiv.appendChild(info3Text).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-
+                return;
 
             }
             if (_eis.kategorie == "Soßen") {
                 amount = 1;
-                iceDiv.appendChild(info3Text).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-
+                return;
             }
-        } else {
-            localStorage.setItem(_eis.stück.toString(), inhalt);
-            iceDiv.appendChild(info3Text).innerHTML = "";
         }
-        /* if (localStorage.length == 1) {
-            
-         }*/
-
+        localStorage.setItem(_eis.stück.toString(), inhalt);
     }
 
 
