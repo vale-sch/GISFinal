@@ -64,7 +64,8 @@ namespace Eisdiele {
         informationDiv.appendChild(infoTag).innerHTML = "Mit dem Klick auf den Buttons, erklären Sie sich einverstanden mit den Shop AGB`s";
 
         informationDiv.appendChild(sendBuy).innerHTML = "Bezahlen";
-
+        console.log("-------localStorage-------");
+        console.log(localStorage);
 
     }
     function generateContentInForm(): void {
