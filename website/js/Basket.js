@@ -110,7 +110,6 @@ var Eisdiele;
         if (Eisdiele.articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");
             basketNumber.innerHTML = "" + Eisdiele.articleCounter;
-            //localStorage.clear();
         }
         else {
             basketNumber.innerHTML = "";

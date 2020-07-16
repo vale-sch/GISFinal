@@ -120,18 +120,27 @@ namespace Eisdiele {
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
-
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
                 return;
             }
-            if (_eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
+            if (_eis.kategorie == "Stecksachen") {
                 amount = 1;
                 iceDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
 
-            } else if (_eis.kategorie == "Eis") {
-                localStorage.setItem(_eis.stück.toString(), inhalt);
+            }
+            if (_eis.kategorie == "Streusel") {
+                amount = 1;
+                iceDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
+                return;
+
+            } 
+            if (_eis.kategorie == "Soßen") {
+                amount = 1;
+                iceDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
             }
         }

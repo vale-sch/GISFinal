@@ -134,7 +134,6 @@ namespace Eisdiele {
         if (articleCounter > 0) {
             basketNumber.setAttribute("id", "basketNumber");
             basketNumber.innerHTML = "" + articleCounter;
-            //localStorage.clear();
         }
         else {
             basketNumber.innerHTML = "";
