@@ -13,8 +13,6 @@ var Eisdiele;
     let amount = 1;
     let eis;
     let constantNumber;
-    let waffelText;
-    let toppingText;
     window.addEventListener("load", init);
     appendFunction();
     async function init(_event) {
@@ -103,42 +101,30 @@ var Eisdiele;
     }
     function pushToLocalStorage(_eis) {
         let inhalt = JSON.stringify(_eis);
-        waffelText = document.createElement("p");
-        toppingText = document.createElement("p");
-        waffelText.style.color = "red";
-        toppingText.style.color = "red";
-        waffelText.style.top = "0";
-        toppingText.style.top = "0";
-        waffelText.style.fontWeight = "20px";
-        toppingText.style.fontWeight = "20px";
-        if (localStorage.length == 1) {
+        if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
-                iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
                 return;
             }
+        }
+        if (localStorage.length == 1) {
             if (_eis.kategorie == "Stecksachen") {
                 amount = 1;
-                iceDiv.appendChild(toppingText).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
             }
             if (_eis.kategorie == "Streusel") {
                 amount = 1;
-                iceDiv.appendChild(toppingText).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
             }
             if (_eis.kategorie == "Soßen") {
                 amount = 1;
-                iceDiv.appendChild(toppingText).innerHTML = "Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!";
                 console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
             }
         }
-        //setupDiv.appendChild(waffelText).innerHTML = "";
-        //setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator() {
