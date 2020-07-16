@@ -115,24 +115,25 @@ namespace Eisdiele {
         let inhalt: string = JSON.stringify(_eis);
         waffelText = <HTMLParagraphElement>document.createElement("p");
         toppingText = <HTMLParagraphElement>document.createElement("p");
-
+        waffelText.style.color = "red";
+        toppingText.style.color = "red";
         if (localStorage.length >= 1) {
             if (_eis.kategorie == "Waffel") {
                 amount = 1;
-                setupDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                iceDiv.appendChild(waffelText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
                 console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
                 return;
             }
             if (_eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
                 amount = 1;
-                setupDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
-                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Tochter!");
+                iceDiv.appendChild(toppingText).innerHTML = "Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!";
+                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
                 return;
 
             }
         }
-        setupDiv.appendChild(waffelText).innerHTML = "";
-        setupDiv.appendChild(toppingText).innerHTML = "";
+        //setupDiv.appendChild(waffelText).innerHTML = "";
+        //setupDiv.appendChild(toppingText).innerHTML = "";
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
 
