@@ -118,7 +118,7 @@ namespace Eisdiele {
         h2TextStore.style.color = "#411f1f";
         h2TextStore.style.textAlign = "center";
 
-        informationDiv.appendChild(h2TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
+        informationDiv.appendChild(h2TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abgeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
         onClickBasket();
         console.log(response);
 
