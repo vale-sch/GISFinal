@@ -145,7 +145,7 @@ namespace Eisdiele {
                     formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
-            if (localStorage.length >= 1) {
+            if (localStorage.length > 0) {
                 console.log("isTopping? = " + isTopping);
                 if (!isTopping) {
                     let button: HTMLButtonElement = document.createElement("button");
@@ -198,7 +198,7 @@ namespace Eisdiele {
                 isTopping = true;
             } else {
                 isTopping = false;
-            } 
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
 

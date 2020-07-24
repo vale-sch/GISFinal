@@ -117,7 +117,7 @@ var Eisdiele;
                     formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
-            if (localStorage.length >= 1) {
+            if (localStorage.length > 0) {
                 console.log("isTopping? = " + isTopping);
                 if (!isTopping) {
                     let button = document.createElement("button");
