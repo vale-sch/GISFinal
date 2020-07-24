@@ -188,7 +188,7 @@ namespace Eisdiele {
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator(): void {
-        isTopping = false;
+        
         if (localStorage.length > 0) {
             let actualCreation: HTMLParagraphElement = document.createElement("p");
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
