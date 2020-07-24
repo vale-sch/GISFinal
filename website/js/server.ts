@@ -1,6 +1,7 @@
 import * as Http from "http";
 import * as url from "url";
 import * as Mongo from "mongodb";
+// !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
 import { ParsedUrlQuery } from "querystring";
 
 export namespace Eisdiele {
@@ -10,17 +11,17 @@ export namespace Eisdiele {
     // tslint:disable-next-line: no-any
     [type: string]: string | string[] | undefined;
   }
-
   export interface Orders {
     _id: string;
     Vorname: string;
     Nachname: string;
     Email: string;
     Passwort: string;
-    Bestellung: string[];
+    Waffel: string;
+    Eis: string[];
+    Toppings: string[];
     Gesamtpreis: string;
   }
-
   let server: Http.Server = Http.createServer();
   //let receivedData: Data[];
   let port: number | string | undefined = process.env.PORT;
@@ -112,6 +113,7 @@ export namespace Eisdiele {
     await datas.insertOne(_datas);
 
   }
+  // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
   async function receiveDatas(_response: Http.ServerResponse): Promise<Eisdiele.Orders[]> {
     let cursur: Mongo.Cursor<Eisdiele.Orders> = datas.find();
     // tslint:disable-next-line: no-any
@@ -119,12 +121,13 @@ export namespace Eisdiele {
     return await orders;
 
   }
-
+  // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
   // tslint:disable-next-line: no-any
   async function receiveJSONObj(_response: Http.ServerResponse, _result: any): Promise<void> {
     _response.setHeader("content-type", "application/json");
     _response.write(JSON.stringify(await _result));
   }
+  // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
   export async function removeOne(_query: ParsedUrlQuery): Promise<Mongo.DeleteWriteOpResultObject> {
     let id: string = <string>_query["id"];
     let objID: Mongo.ObjectId = new Mongo.ObjectId(id);

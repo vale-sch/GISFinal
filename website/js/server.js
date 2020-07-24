@@ -83,17 +83,20 @@ var Eisdiele;
     async function storeDatas(_datas) {
         await datas.insertOne(_datas);
     }
+    // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
     async function receiveDatas(_response) {
         let cursur = datas.find();
         // tslint:disable-next-line: no-any
         let orders = await cursur.toArray();
         return await orders;
     }
+    // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
     // tslint:disable-next-line: no-any
     async function receiveJSONObj(_response, _result) {
         _response.setHeader("content-type", "application/json");
         _response.write(JSON.stringify(await _result));
     }
+    // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
     async function removeOne(_query) {
         let id = _query["id"];
         let objID = new Mongo.ObjectId(id);

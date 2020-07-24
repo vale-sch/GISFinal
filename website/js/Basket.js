@@ -61,24 +61,32 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            let nameLabel = document.createElement("label");
-            nameLabel.setAttribute("for", "Bestellung:");
-            let nameInput = document.createElement("input");
-            nameInput.setAttribute("name", "Bestellung");
-            nameInput.setAttribute("value", index.toString() + eis.name);
-            form.appendChild(nameLabel).innerHTML = articleKey + eis.name;
-            form.appendChild(nameInput).innerHTML = articleKey + eis.name;
-            nameLabel.style.display = "none";
-            nameInput.style.display = "none";
+            if (eis.kategorie == "Waffel") {
+                let waffelInput = document.createElement("input");
+                waffelInput.setAttribute("name", "Waffel");
+                waffelInput.setAttribute("value", " " + eis.name);
+                form.appendChild(waffelInput).innerHTML = articleKey + eis.name;
+                waffelInput.style.display = "none";
+            }
+            if (eis.kategorie == "Eis") {
+                let eisInput = document.createElement("input");
+                eisInput.setAttribute("name", "Eis");
+                eisInput.setAttribute("value", " " + eis.name);
+                form.appendChild(eisInput).innerHTML = articleKey + eis.name;
+                eisInput.style.display = "none";
+            }
+            if (eis.kategorie == "Stecksachen" || eis.kategorie == "Soßen" || eis.kategorie == "Streusel") {
+                let toppingsInput = document.createElement("input");
+                toppingsInput.setAttribute("name", "Toppings");
+                toppingsInput.setAttribute("value", " " + eis.name);
+                form.appendChild(toppingsInput).innerHTML = articleKey + eis.name;
+                toppingsInput.style.display = "none";
+            }
         }
-        let preisLabel = document.createElement("label");
-        preisLabel.setAttribute("for", "Gesamtpreis");
         let preisInput = document.createElement("input");
         preisInput.setAttribute("name", "Gesamtpreis");
         preisInput.setAttribute("value", countPrice.toFixed(2).toString());
-        form.appendChild(preisLabel).innerHTML = "Gesamtpreis: ";
         form.appendChild(preisInput).innerHTML = countPrice.toFixed(2) + "";
-        preisLabel.style.display = "none";
         preisInput.style.display = "none";
     }
     async function onClickButtonStoreData(_click) {
@@ -87,16 +95,24 @@ var Eisdiele;
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        url += "/storeData";
-        url += "?" + query.toString();
+        url += "/storeData" + "?" + query.toString();
         let response = await fetch(url);
         localStorage.clear();
         basketArticleDiv.innerHTML = "";
         informationDiv.innerHTML = "";
+        informationDiv.style.width = "100%";
         let h2TextStore = document.createElement("h2");
         h2TextStore.style.color = "#411f1f";
         h2TextStore.style.textAlign = "center";
+        let getToAdminLink = document.createElement("a");
+        getToAdminLink.setAttribute("href", "https://vale-sch.github.io/GISFinal/website/administrator.html");
+        getToAdminLink.setAttribute("target", "_blank");
+        getToAdminLink.style.fontSize = "30px";
+        let importetGif = document.createElement("img");
+        importetGif.setAttribute("src", "/GISFinal/website/js/GISFINAL.gif");
         informationDiv.appendChild(h2TextStore).innerHTML = "Sie haben die Bestellung erfolgreich abgeschickt, eine Bestätigungs-Email wurde soeben an Sie gesendet";
+        informationDiv.appendChild(getToAdminLink).innerHTML = "Zur Verkäufer Seite" + "<br> <br>";
+        informationDiv.appendChild(importetGif);
         onClickBasket();
         console.log(response);
     }

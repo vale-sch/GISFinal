@@ -1,55 +1,69 @@
 namespace Eisdiele {
-
-    export interface Orders {
+    window.addEventListener("load", init);
+    interface Orders {
         _id: string;
         Vorname: string;
         Nachname: string;
         Email: string;
         Passwort: string;
-        Bestellung: string[];
+        Waffel: string;
+        Eis: string[];
+        Toppings: string[];
         Gesamtpreis: string;
     }
 
     let getButton: HTMLButtonElement;
-    let output: HTMLDivElement;
+    let inputDiv: HTMLDivElement;
     let getDiv: HTMLDivElement;
+    let paidDiv: HTMLDivElement;
+    let sentDiv: HTMLDivElement;
 
     function init(): void {
-        output = <HTMLDivElement>document.getElementById("orders");
+        inputDiv = <HTMLDivElement>document.getElementById("orders");
+        paidDiv = <HTMLDivElement>document.getElementById("paid");
+        sentDiv = <HTMLDivElement>document.getElementById("paid");
         getDiv = <HTMLDivElement>document.getElementById("getButton");
-        output.setAttribute("id", "output");
+
         getButton = document.createElement("button");
         getButton.setAttribute("id", "getButton");
 
         getDiv.appendChild(getButton).innerHTML = "Get Orders";
         getButton.addEventListener("click", onClickButtonReceive.bind(getButton));
-
-
     }
-    init();
+
     async function onClickButtonReceive(_click: Event): Promise<void> {
 
         //let url: string = "http://localhost:8100";
         let url: string = "https://icecreamforyou.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
-
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        // url += "/";
-        url += "/receive";
-        url += "?" + query.toString();
+
+        url += "/receive" + "?" + query.toString();
 
         let response: Response = await fetch(url);
         let orders: Orders[] = await response.json();
 
+        inputDiv.innerHTML = "";
+        paidDiv.innerHTML = "";
+        sentDiv.innerHTML = "";
+
+        inputDiv.setAttribute("id", "output");
+        inputDiv.style.position = "absolute";
+        inputDiv.style.maxWidth = "30%";
+        inputDiv.style.paddingTop = "2%";
+        inputDiv.style.paddingLeft = "5%";
+
         let out: HTMLDivElement = <HTMLDivElement>document.getElementById("output")!;
         out.innerHTML = "";
+
         for (let order of orders) {
             console.log("order:" + order);
             out.appendChild(createOrder(order));
         }
     }
-    function createOrder(_order: Orders): HTMLElement {
+
+    function createOrder(_order: Orders): HTMLDivElement {
 
         let ordersDiv: HTMLDivElement = document.createElement("div");
         ordersDiv.classList.add("one-order");
@@ -59,22 +73,22 @@ namespace Eisdiele {
         let id: string = _order._id;
         let forename: string = _order.Vorname;
         let name: string = _order.Nachname;
-        let Email: string = _order.Email;
-        let Passwort: string = _order.Passwort;
-        let Bestellung: string[] = _order.Bestellung;
+        let email: string = _order.Email;
+        let passwort: string = _order.Passwort;
+        let waffel: string = _order.Waffel;
+        let eis: string[] = _order.Eis;
+        let toppings: string[] = _order.Toppings;
         let gesamtPreis: string = _order.Gesamtpreis;
-        let removeBtn: HTMLButtonElement = document.createElement("button");
-        removeBtn.innerText = "Geld erhalten & Versendet";
-        removeBtn.addEventListener("click", removeOne.bind(removeBtn));
-        removeBtn.style.lineHeight = "25px";
-        output.appendChild(ordersDiv).innerHTML = " Bestellungs_Id: " + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname: " + name + "</br>" + "Email: " + Email + "</br>" + "Passwort: " + Passwort + "</br>" + "Eis-Zusammensetzung: " + Bestellung + "</br>" + "Gesamtpreis: " + gesamtPreis;
-        ordersDiv.appendChild(removeBtn);
+        let changeStatusButton: HTMLButtonElement = document.createElement("button");
+        changeStatusButton.addEventListener("click", changeStatusToPaid.bind(changeStatusButton));
+        changeStatusButton.innerText = "Geld erhalten";
+        inputDiv.appendChild(ordersDiv).innerHTML = " Bestellungs_Id: " + id + "</br>" + " Vorname: " + forename + "</br>" + "Nachname: " + name + "</br>" + "Email: " + email + "</br>" + "Passwort: " + passwort + "</br>" + "Waffel: " + waffel + "</br>" + "Eis-Zusammensetzung: " + eis + "</br>" + "Toppings-Zusammensetzung: " + toppings + "</br>" + "Gesamtpreis: " + gesamtPreis + "€" + "<br><br>";
+        ordersDiv.appendChild(changeStatusButton);
 
         return ordersDiv;
-
     }
+    // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
     async function removeOne(_e: Event): Promise<void> {
-
         //let url: string = "http://localhost:8100";
         let url: string = "https://icecreamforyou.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
@@ -86,11 +100,50 @@ namespace Eisdiele {
         let clickedButton: HTMLElement = <HTMLElement>_e.target;
         let parentDiv: HTMLElement = <HTMLElement>clickedButton.parentElement;
         let idToRemove: string = parentDiv.getAttribute("_id")!;
+
         url += "/deleteOne?id=" + idToRemove;
         url += query.toString();
 
+        parentDiv.remove();
         let response: Response = await fetch(url);
-        console.log(await response.json());
-        await onClickButtonReceive(_e);
+        console.log("Removed one: " + await response.json());
+    }
+
+    function changeStatusToPaid(_e: Event): void {
+        let clickedButton: HTMLElement = <HTMLElement>_e.target;
+        let parentDiv: HTMLElement = <HTMLElement>clickedButton.parentElement;
+
+        paidDiv = <HTMLDivElement>document.getElementById("paid");
+        clickedButton.style.display = "none";
+
+        let changeStatusButton: HTMLButtonElement = document.createElement("button");
+        changeStatusButton.addEventListener("click", changeStatusToSent.bind(changeStatusButton));
+        changeStatusButton.innerText = "Paket verschickt";
+
+        paidDiv.style.position = "absolute";
+        paidDiv.style.paddingTop = "2%";
+        paidDiv.style.maxWidth = "30%";
+        paidDiv.style.left = "37.5%";
+        paidDiv.appendChild(parentDiv);
+        parentDiv.appendChild(changeStatusButton);
+    }
+    
+    function changeStatusToSent(_e: Event): void {
+        let clickedButton: HTMLElement = <HTMLElement>_e.target;
+        let parentDiv: HTMLElement = <HTMLElement>clickedButton.parentElement;
+
+        sentDiv = <HTMLDivElement>document.getElementById("paid");
+        clickedButton.style.display = "none";
+
+        let removeBtn: HTMLButtonElement = document.createElement("button");
+        removeBtn.innerText = "Aus der Datenbank entfernen";
+        removeBtn.addEventListener("click", removeOne.bind(removeBtn));
+
+        sentDiv.style.position = "absolute";
+        sentDiv.style.paddingTop = "2%";
+        sentDiv.style.maxWidth = "30%";
+        sentDiv.style.left = "70%";
+        sentDiv.appendChild(parentDiv);
+        parentDiv.appendChild(removeBtn);
     }
 }

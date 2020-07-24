@@ -1,10 +1,11 @@
 "use strict";
 var Eisdiele;
 (function (Eisdiele) {
+    let jsonObj = [];
     let setupDiv;
     let waffelDiv;
     let eisDiv;
-    let sosenDiv;
+    let soßenDiv;
     let stecksachenDiv;
     let streuselDiv;
     let formatDiv;
@@ -22,52 +23,84 @@ var Eisdiele;
     }
     async function communicate(_url) {
         let response = await fetch(_url);
-        Eisdiele.jsonObj = await response.json();
+        jsonObj = await response.json();
     }
     function appendFunction() {
         setupDiv = document.getElementById("setupDiv");
         waffelDiv = document.getElementById("WaffelnDiv");
         eisDiv = document.getElementById("EisDiv");
-        sosenDiv = document.getElementById("SosenDiv");
+        soßenDiv = document.getElementById("SosenDiv");
         stecksachenDiv = document.getElementById("StecksachenDiv");
         streuselDiv = document.getElementById("StreuselDiv");
         iceDiv = document.getElementById("iceDiv");
         iceDiv = document.getElementById("iceDiv");
     }
     function generateIceSortiment() {
-        for (let index = 0; index < Eisdiele.jsonObj.length; index++) {
-            if (Eisdiele.jsonObj[index].kategorie == "Waffel") {
+        let setupHeadingText = document.createElement("h1");
+        let setupParagraphText = document.createElement("p");
+        setupParagraphText.style.textAlign = "center";
+        setupDiv.appendChild(setupHeadingText).innerHTML = "1. Waffeln";
+        setupDiv.appendChild(setupParagraphText).innerHTML = "Haben Sie <b>viel Spaß</b> mit der neuen Version des <b>IceCreators</b>";
+        let hrElement0 = document.createElement("hr");
+        let hrElement1 = document.createElement("hr");
+        let hrElement2 = document.createElement("hr");
+        let hrElement3 = document.createElement("hr");
+        let hrElement4 = document.createElement("hr");
+        hrElement0.style.height = "0px";
+        hrElement1.style.height = "0px";
+        hrElement2.style.height = "0px";
+        hrElement3.style.height = "0px";
+        hrElement4.style.height = "0px";
+        let eisHeadingText = document.createElement("h1");
+        setupDiv.appendChild(eisDiv);
+        eisDiv.appendChild(eisHeadingText).innerHTML = "2. Eiskugeln";
+        eisDiv.appendChild(hrElement0);
+        let steckSachenText = document.createElement("h1");
+        setupDiv.appendChild(stecksachenDiv);
+        stecksachenDiv.appendChild(steckSachenText).innerHTML = "3. Stecksachen";
+        stecksachenDiv.appendChild(hrElement1);
+        let soßenText = document.createElement("h1");
+        setupDiv.appendChild(soßenDiv);
+        soßenDiv.appendChild(hrElement2);
+        soßenDiv.appendChild(soßenText).innerHTML = "3. Soßen";
+        soßenDiv.appendChild(hrElement3);
+        let streuselText = document.createElement("h1");
+        setupDiv.appendChild(streuselDiv);
+        streuselDiv.appendChild(streuselText).innerHTML = "4. Streusel";
+        streuselDiv.appendChild(hrElement4);
+        for (let index = 0; index < jsonObj.length; index++) {
+            if (jsonObj[index].kategorie == "Waffel") {
                 formatDiv = document.createElement("div");
                 formatDiv.setAttribute("class", "formatDiv");
                 setupDiv.appendChild(waffelDiv);
                 waffelDiv.appendChild(formatDiv);
             }
-            if (Eisdiele.jsonObj[index].kategorie == "Eis") {
+            if (jsonObj[index].kategorie == "Eis") {
                 formatDiv = document.createElement("div");
                 formatDiv.setAttribute("class", "formatDiv");
                 setupDiv.appendChild(eisDiv);
                 eisDiv.appendChild(formatDiv);
             }
-            if (Eisdiele.jsonObj[index].kategorie == "Stecksachen") {
+            if (jsonObj[index].kategorie == "Stecksachen") {
                 formatDiv = document.createElement("div");
                 formatDiv.setAttribute("class", "formatDiv");
                 setupDiv.appendChild(stecksachenDiv);
                 stecksachenDiv.appendChild(formatDiv);
             }
-            if (Eisdiele.jsonObj[index].kategorie == "Soßen") {
+            if (jsonObj[index].kategorie == "Soßen") {
                 formatDiv = document.createElement("div");
                 formatDiv.setAttribute("class", "formatDiv");
-                setupDiv.appendChild(sosenDiv);
-                sosenDiv.appendChild(formatDiv);
+                setupDiv.appendChild(soßenDiv);
+                soßenDiv.appendChild(formatDiv);
             }
-            if (Eisdiele.jsonObj[index].kategorie == "Streusel") {
+            if (jsonObj[index].kategorie == "Streusel") {
                 formatDiv = document.createElement("div");
                 formatDiv.setAttribute("class", "formatDiv");
                 setupDiv.appendChild(streuselDiv);
                 streuselDiv.appendChild(formatDiv);
             }
             let img = document.createElement("img");
-            img.setAttribute("src", Eisdiele.jsonObj[index].image);
+            img.setAttribute("src", jsonObj[index].image);
             let beschreibung = document.createElement("p");
             beschreibung.setAttribute("class", "text");
             let name = document.createElement("p");
@@ -75,23 +108,31 @@ var Eisdiele;
             let preis = document.createElement("p");
             preis.setAttribute("class", "text");
             formatDiv.appendChild(img);
-            formatDiv.appendChild(name).innerHTML = Eisdiele.jsonObj[index].name;
-            formatDiv.appendChild(beschreibung).innerHTML = "-->" + Eisdiele.jsonObj[index].beschreibung;
-            formatDiv.appendChild(preis).innerHTML = "Kosten pro Stück: " + Eisdiele.jsonObj[index].preis + "€";
+            formatDiv.appendChild(name).innerHTML = jsonObj[index].name;
+            formatDiv.appendChild(beschreibung).innerHTML = "-->" + jsonObj[index].beschreibung;
+            formatDiv.appendChild(preis).innerHTML = "Kosten pro Stück: " + jsonObj[index].preis + "€";
             if (localStorage.length == 0) {
-                if (Eisdiele.jsonObj[index].kategorie == "Waffel") {
+                if (jsonObj[index].kategorie == "Waffel") {
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
-                    button.addEventListener("click", onClickCreate.bind(Eisdiele.jsonObj[index]));
+                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
-            else {
-                if (Eisdiele.jsonObj[index].kategorie == "Eis") {
+            if (localStorage.length >= 1) {
+                if (jsonObj[index].kategorie == "Eis") {
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
-                    button.addEventListener("click", onClickCreate.bind(Eisdiele.jsonObj[index]));
+                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                }
+                if (localStorage.length >= 2) {
+                    let button = document.createElement("button");
+                    button.setAttribute("class", "creationButton");
+                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
+                    if (jsonObj[index].kategorie == "Stecksachen" || jsonObj[index].kategorie == "Streusel" || jsonObj[index].kategorie == "Soßen") {
+                        formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                    }
                 }
             }
         }
@@ -136,31 +177,26 @@ var Eisdiele;
             pictureDiv.setAttribute("class", "pictureDiv");
             iceDiv.appendChild(pictureDiv);
             iceDiv.appendChild(informationTag).innerHTML = eis.stück + "." + "-" + eis.name;
+            img.style.left = "18%";
             if (eis.kategorie == "Waffel") {
                 img.style.position = "fixed";
                 img.style.bottom = "0%";
-                img.style.left = "13%";
                 pictureDiv.appendChild(img);
             }
             else if (eis.kategorie == "Eis") {
                 if (eis.stück == 2) {
                     img.style.position = "fixed";
-                    img.style.left += "13%";
                     img.style.bottom += "300px";
                     pictureDiv.appendChild(img);
                 }
                 else {
                     img.style.position = "fixed";
-                    img.style.left += ("13%");
-                    //img.style.left = - (index * 7) * 49 + "px";
                     img.style.bottom += (eis.stück * 95) + 120 + "px";
-                    //img.style.bottom = "-100px";
                     pictureDiv.appendChild(img);
                 }
             }
             if (eis.kategorie == "Stecksachen") {
                 img.style.position = "fixed";
-                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 100) + 300 + "px";
                 let rotateNumber = index * 3;
                 img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
@@ -168,13 +204,11 @@ var Eisdiele;
             }
             if (eis.kategorie == "Streusel") {
                 img.style.position = "fixed";
-                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
                 pictureDiv.appendChild(img);
             }
             if (eis.kategorie == "Soßen") {
                 img.style.position = "fixed";
-                img.style.left += ("13%");
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
             }
@@ -189,13 +223,23 @@ var Eisdiele;
     }
     function onClickclearIceDiv(_iceDiv) {
         iceDiv.innerHTML = "";
-        if (localStorage.length > 0)
-            theIceCreator();
+        theIceCreator();
+        setupDiv.innerHTML = "";
+        waffelDiv.innerHTML = "";
+        eisDiv.innerHTML = "";
+        stecksachenDiv.innerHTML = "";
+        soßenDiv.innerHTML = "";
+        streuselDiv.innerHTML = "";
+        generateIceSortiment();
     }
     function onClickclearSetupDiv(_iceDiv) {
         setupDiv.innerHTML = "";
-        if (localStorage.length > 0)
-            generateIceSortiment();
+        waffelDiv.innerHTML = "";
+        eisDiv.innerHTML = "";
+        stecksachenDiv.innerHTML = "";
+        soßenDiv.innerHTML = "";
+        streuselDiv.innerHTML = "";
+        generateIceSortiment();
     }
     function onClickBasket() {
         Eisdiele.articleCounter = localStorage.length;

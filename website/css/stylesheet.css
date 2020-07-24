@@ -394,6 +394,21 @@ nav a:hover {
 }
 
 @media screen and (max-width: 933px) {
+    #informationAnzeige input {
+        line-height: 15px;
+        font-size: 10px;
+    }
+    #informationAnzeige form {
+        padding-top: 20%;
+        line-height: 10px;
+        font-size: 10px;
+    }
+    #informationAnzeige h2 {
+        font-size: 10px;
+    }
+    #totalPrice {
+        font-size: 10px;
+    }
     a {
         font-size: 10px;
     }
