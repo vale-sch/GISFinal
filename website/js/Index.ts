@@ -165,6 +165,7 @@ namespace Eisdiele {
         }
     }
     function onClickCreate(this: Eis, _click: MouseEvent): void {
+        console.log(this);
         if (localStorage.length > 0) {
             if (this.kategorie == "Eis") {
                 constantNumber = localStorage.length;
