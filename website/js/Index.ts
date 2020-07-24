@@ -61,13 +61,12 @@ namespace Eisdiele {
         let hrElement1: HTMLElement = <HTMLElement>document.createElement("hr");
         let hrElement2: HTMLElement = <HTMLElement>document.createElement("hr");
         let hrElement3: HTMLElement = <HTMLElement>document.createElement("hr");
-        let hrElement4: HTMLElement = <HTMLElement>document.createElement("hr");
 
         hrElement0.style.height = "0px";
         hrElement1.style.height = "0px";
         hrElement2.style.height = "0px";
         hrElement3.style.height = "0px";
-        hrElement4.style.height = "0px";
+     
 
         let eisHeadingText: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h1");
         setupDiv.appendChild(eisDiv);
@@ -81,14 +80,13 @@ namespace Eisdiele {
 
         let soßenText: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h1");
         setupDiv.appendChild(soßenDiv);
-        soßenDiv.appendChild(hrElement2);
         soßenDiv.appendChild(soßenText).innerHTML = "3. Soßen";
-        soßenDiv.appendChild(hrElement3);
+        soßenDiv.appendChild(hrElement2);
+
         let streuselText: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h1");
         setupDiv.appendChild(streuselDiv);
-
         streuselDiv.appendChild(streuselText).innerHTML = "4. Streusel";
-        streuselDiv.appendChild(hrElement4);
+        streuselDiv.appendChild(hrElement3);
 
 
         for (let index: number = 0; index < jsonObj.length; index++) {
