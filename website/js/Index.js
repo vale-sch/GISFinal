@@ -125,10 +125,10 @@ var Eisdiele;
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     if (jsonObj[index].kategorie == "Eis") {
+                        console.log(lastString);
                         if (lastString == "Eis") {
-                            if (jsonObj[index].kategorie == "Stecksachen") {
+                            if (jsonObj[index].kategorie != "Eis" && "Waffel")
                                 formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                            }
                         }
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
