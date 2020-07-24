@@ -43,7 +43,7 @@ namespace Eisdiele {
 
             formatDiv.appendChild(img);
 
-            formatDiv.appendChild(beschreibung).innerHTML = "-->" + eis.beschreibung;
+            formatDiv.appendChild(beschreibung).innerHTML =  eis.name;
             formatDiv.appendChild(preis).innerHTML = "Kosten pro Stück: " + eis.preis + "€";
             formatDiv.appendChild(button).innerHTML = "Delete this";
 
