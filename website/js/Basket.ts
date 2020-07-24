@@ -54,7 +54,7 @@ namespace Eisdiele {
         }
         totalPrice = <HTMLParagraphElement>document.createElement("h2");
         totalPrice.style.textAlign = "left";
-        informationDiv.appendChild(totalPrice).innerHTML = "\xa0\xa0" + Math.round((countPrice + Number.EPSILON) * 100) / 100 + "€";
+        informationDiv.appendChild(totalPrice).innerHTML = "\xa0\xa0" + countPrice.toFixed(2) + "€";
         let sendBuy: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
         sendBuy.addEventListener("click", onClickButtonStoreData.bind(sendBuy));
         let infoTag: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
@@ -89,10 +89,10 @@ namespace Eisdiele {
         preisLabel.setAttribute("for", "Gesamtpreis");
         let preisInput: HTMLInputElement = document.createElement("input");
         preisInput.setAttribute("name", "Gesamtpreis");
-        preisInput.setAttribute("value", (Math.round((countPrice + Number.EPSILON) * 100) / 100).toString());
+        preisInput.setAttribute("value", countPrice.toFixed(2).toString());
 
         form.appendChild(preisLabel).innerHTML = "Gesamtpreis: ";
-        form.appendChild(preisInput).innerHTML = Math.round((countPrice + Number.EPSILON) * 100) / 100 + "";
+        form.appendChild(preisInput).innerHTML = countPrice.toFixed(2) + "";
         preisLabel.style.display = "none";
         preisInput.style.display = "none";
 
@@ -100,7 +100,7 @@ namespace Eisdiele {
 
     async function onClickButtonStoreData(_click: MouseEvent): Promise<void> {
 
-        // let url: string = "http://localhost:8100";
+        //let url: string = "http://localhost:8100";
         let url: string = "https://icecreamforyou.herokuapp.com";
         let formData: FormData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any

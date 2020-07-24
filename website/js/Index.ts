@@ -19,12 +19,12 @@ namespace Eisdiele {
     async function init(_event: Event): Promise<void> {
         await communicate("eisArtikel.json");
         theIceCreator();
+        generateIceSortiment();
     }
 
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
         jsonObj = await response.json();
-        generateIce();
     }
 
     function appendFunction(): void {
@@ -39,7 +39,7 @@ namespace Eisdiele {
 
     }
 
-    function generateIce(): void {
+    function generateIceSortiment(): void {
         for (let index: number = 0; index < jsonObj.length; index++) {
 
             if (jsonObj[index].kategorie == "Waffel") {
@@ -83,15 +83,32 @@ namespace Eisdiele {
             let preis: HTMLParagraphElement = document.createElement("p");
             preis.setAttribute("class", "text");
 
-            let button: HTMLButtonElement = document.createElement("button");
-            button.setAttribute("class", "creationButton");
-            button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
+
 
             formatDiv.appendChild(img);
             formatDiv.appendChild(name).innerHTML = jsonObj[index].name;
             formatDiv.appendChild(beschreibung).innerHTML = "-->" + jsonObj[index].beschreibung;
             formatDiv.appendChild(preis).innerHTML = "Kosten pro Stück: " + jsonObj[index].preis + "€";
-            formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+
+            if (localStorage.length == 0) {
+                if (jsonObj[index].kategorie == "Waffel") {
+                    let button: HTMLButtonElement = document.createElement("button");
+                    button.setAttribute("class", "creationButton");
+                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
+                    formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                }
+
+
+            } else {
+                if (jsonObj[index].kategorie == "Eis") {
+                    let button: HTMLButtonElement = document.createElement("button");
+                    button.setAttribute("class", "creationButton");
+                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
+                    formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                }
+
+            }
+
         }
     }
     function onClickCreate(this: Eis, _click: MouseEvent): void {
@@ -106,39 +123,16 @@ namespace Eisdiele {
         amount++;
         this.stück = amount;
         pushToLocalStorage(this);
+        onClickclearSetupDiv(setupDiv);
         onClickBasket();
+
         onClickclearIceDiv(iceDiv);
+
+
     }
+
     function pushToLocalStorage(_eis: Eis): void {
         let inhalt: string = JSON.stringify(_eis);
-        if (localStorage.length >= 1) {
-            if (_eis.kategorie == "Waffel") {
-                amount = 1;
-                console.log("Nur eine Waffel, man nimmt doch in Echt auch keine 2 Waffeln!");
-                return;
-            }
-
-        }
-        if (localStorage.length == 1) {
-            if (_eis.kategorie == "Stecksachen") {
-                amount = 1;
-                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-                return;
-
-
-            }
-            if (_eis.kategorie == "Streusel") {
-                amount = 1;
-                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-                return;
-
-            }
-            if (_eis.kategorie == "Soßen") {
-                amount = 1;
-                console.log("Nach der Waffel kommt die Eiskugel, das weiß sogar meine 7 jährige Enkelin!");
-                return;
-            }
-        }
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
 
@@ -235,6 +229,12 @@ namespace Eisdiele {
         iceDiv.innerHTML = "";
         if (localStorage.length > 0)
             theIceCreator();
+
+    }
+    function onClickclearSetupDiv(_iceDiv: HTMLDivElement): void {
+        setupDiv.innerHTML = "";
+        if (localStorage.length > 0)
+            generateIceSortiment();
 
     }
     function onClickBasket(): void {

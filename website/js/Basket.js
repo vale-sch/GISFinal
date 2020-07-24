@@ -44,7 +44,7 @@ var Eisdiele;
         }
         totalPrice = document.createElement("h2");
         totalPrice.style.textAlign = "left";
-        informationDiv.appendChild(totalPrice).innerHTML = "\xa0\xa0" + Math.round((countPrice + Number.EPSILON) * 100) / 100 + "€";
+        informationDiv.appendChild(totalPrice).innerHTML = "\xa0\xa0" + countPrice.toFixed(2) + "€";
         let sendBuy = document.createElement("button");
         sendBuy.addEventListener("click", onClickButtonStoreData.bind(sendBuy));
         let infoTag = document.createElement("p");
@@ -75,14 +75,14 @@ var Eisdiele;
         preisLabel.setAttribute("for", "Gesamtpreis");
         let preisInput = document.createElement("input");
         preisInput.setAttribute("name", "Gesamtpreis");
-        preisInput.setAttribute("value", (Math.round((countPrice + Number.EPSILON) * 100) / 100).toString());
+        preisInput.setAttribute("value", countPrice.toFixed(2).toString());
         form.appendChild(preisLabel).innerHTML = "Gesamtpreis: ";
-        form.appendChild(preisInput).innerHTML = Math.round((countPrice + Number.EPSILON) * 100) / 100 + "";
+        form.appendChild(preisInput).innerHTML = countPrice.toFixed(2) + "";
         preisLabel.style.display = "none";
         preisInput.style.display = "none";
     }
     async function onClickButtonStoreData(_click) {
-        // let url: string = "http://localhost:8100";
+        //let url: string = "http://localhost:8100";
         let url = "https://icecreamforyou.herokuapp.com";
         let formData = new FormData(document.forms[0]);
         // tslint:disable-next-line: no-any

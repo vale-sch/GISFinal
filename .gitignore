@@ -2,6 +2,5 @@
 .DS_Store
 node_modules
 
-website/iceOrders/diagnostic.data/metrics.interim
 
-website/iceOrders/diagnostic.data/
+website/iceOrders
