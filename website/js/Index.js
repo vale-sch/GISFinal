@@ -166,8 +166,9 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (eis.kategorie != "Stecksachen" && "Streusel" && "Soßen")
+            if (eis.kategorie != "Stecksachen") {
                 isTopping = false;
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");
