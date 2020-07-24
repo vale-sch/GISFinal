@@ -196,7 +196,7 @@ namespace Eisdiele {
             eis = <Eis>JSON.parse(jsonString);
             if (eis.kategorie == "Stecksachen" || eis.kategorie == "Streusel" || eis.kategorie == "Soßen") {
                 isTopping = true;
-            }
+            } else isTopping = false;
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
 
@@ -276,7 +276,7 @@ namespace Eisdiele {
         generateIceSortiment();
 
     }
- 
+
 
     function onClickBasket(): void {
         articleCounter = localStorage.length;
