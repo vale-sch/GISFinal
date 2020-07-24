@@ -173,7 +173,6 @@ namespace Eisdiele {
         if (localStorage.length == 0) {
             amount = 0;
         }
-        alert(this.kategorie);
         if (this.kategorie == "Stecksachen" || "Streusel" || "Soßen") {
             isTopping = true;
         }
