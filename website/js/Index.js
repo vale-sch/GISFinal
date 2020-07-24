@@ -118,7 +118,6 @@ var Eisdiele;
                 }
             }
             if (localStorage.length > 0) {
-                console.log("isTopping? = " + isTopping);
                 if (!isTopping) {
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
@@ -147,6 +146,9 @@ var Eisdiele;
         }
         if (this.kategorie == "Stecksachen" || "Streusel" || "Soßen") {
             isTopping = true;
+        }
+        else {
+            isTopping = false;
         }
         amount++;
         this.stück = amount;
