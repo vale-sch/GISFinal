@@ -137,34 +137,16 @@ var Eisdiele;
         }
     }
     function onClickCreate(_click) {
-        console.log(this);
         if (localStorage.length > 0) {
             if (this.kategorie == "Eis") {
                 constantNumber = localStorage.length;
             }
         }
-        if (localStorage.length == 0) {
-            amount = 0;
+        if (localStorage.length > 0) {
+            if (this.kategorie != "Eis")
+                isTopping = true;
         }
-        if (this.kategorie == "Stecksachen") {
-            isTopping = true;
-        }
-        else {
-            isTopping = false;
-        }
-        if (this.kategorie == "Streusel") {
-            isTopping = true;
-        }
-        else {
-            isTopping = false;
-        }
-        if (this.kategorie == "Soßen") {
-            isTopping = true;
-        }
-        else {
-            isTopping = false;
-        }
-        amount++;
+        amount = localStorage.length + 1;
         this.stück = amount;
         pushToLocalStorage(this);
         onClickclear();
