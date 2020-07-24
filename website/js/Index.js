@@ -223,7 +223,7 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
-        if (lastString == "Eis") {
+        if (lastString != "Streusel" && "Stecksachen" && "Soßen") {
             isTopping = false;
         }
         localStorage.removeItem(this.stück.toString());

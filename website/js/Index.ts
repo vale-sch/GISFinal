@@ -268,7 +268,7 @@ namespace Eisdiele {
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
-        if (lastString == "Eis") {
+        if (lastString != "Streusel" && "Stecksachen" && "Soßen") {
             isTopping = false;
         }
         localStorage.removeItem(this.stück.toString());
