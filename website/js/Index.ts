@@ -26,7 +26,7 @@ namespace Eisdiele {
     let eis: Eis;
     let constantNumber: number;
     let isTopping: Boolean = false;
-    let lastString: string;
+    let isToppingString: string;
     let isIceString: string;
     export let articleCounter: number;
 
@@ -211,7 +211,10 @@ namespace Eisdiele {
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
-            lastString = eis.kategorie;
+            if (eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
+                isToppingString = eis.kategorie;
+            }
+            
             if (eis.kategorie == "Eis") {
                 isIceString = eis.kategorie;
             }
@@ -271,7 +274,7 @@ namespace Eisdiele {
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
-        if (lastString != "Streusel" && "Stecksachen" && "Soßen") {
+        if (isToppingString != "Streusel" && "Stecksachen" && "Soßen") {
             isTopping = false;
         }
         localStorage.removeItem(this.stück.toString());

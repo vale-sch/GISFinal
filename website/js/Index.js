@@ -15,7 +15,7 @@ var Eisdiele;
     let eis;
     let constantNumber;
     let isTopping = false;
-    let lastString;
+    let isToppingString;
     let isIceString;
     window.addEventListener("load", init);
     appendFunction();
@@ -172,7 +172,9 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            lastString = eis.kategorie;
+            if (eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
+                isToppingString = eis.kategorie;
+            }
             if (eis.kategorie == "Eis") {
                 isIceString = eis.kategorie;
             }
@@ -227,7 +229,7 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
-        if (lastString != "Streusel" && "Stecksachen" && "Soßen") {
+        if (isToppingString != "Streusel" && "Stecksachen" && "Soßen") {
             isTopping = false;
         }
         localStorage.removeItem(this.stück.toString());
