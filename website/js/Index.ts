@@ -158,7 +158,7 @@ namespace Eisdiele {
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie == "Stecksachen" || "Streusel" ||  "Soßen")
+                    if (jsonObj[index].kategorie == "Stecksachen" || "Streusel" || "Soßen")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
@@ -197,7 +197,7 @@ namespace Eisdiele {
 
             if (eis.kategorie != "Eis" || "Waffel") {
                 isTopping = true;
-            }
+            } else { isTopping = false; }
 
 
 

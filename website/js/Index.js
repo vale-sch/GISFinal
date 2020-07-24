@@ -168,6 +168,9 @@ var Eisdiele;
             if (eis.kategorie != "Eis" || "Waffel") {
                 isTopping = true;
             }
+            else {
+                isTopping = false;
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");
