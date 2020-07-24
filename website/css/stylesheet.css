@@ -232,7 +232,7 @@ p {
 
 #warenKorbArtikel {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     position: absolute;
     text-align: center;
     width: 60%;
