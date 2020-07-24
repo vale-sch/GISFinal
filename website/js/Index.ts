@@ -199,9 +199,7 @@ namespace Eisdiele {
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
-            if (eis.kategorie != "Stecksachen") {
-                isTopping = false;
-            }
+           
 
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
