@@ -150,6 +150,9 @@ var Eisdiele;
         pushToLocalStorage(this);
         onClickclear();
         onClickBasket();
+        if (this.kategorie == "Stecksachen") {
+            isTopping = true;
+        }
     }
     function pushToLocalStorage(_eis) {
         let inhalt = JSON.stringify(_eis);
@@ -165,12 +168,6 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (eis.kategorie == "Stecksachen") {
-                isTopping = true;
-            }
-            else {
-                isTopping = false;
-            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");

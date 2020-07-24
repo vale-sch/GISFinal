@@ -178,6 +178,9 @@ namespace Eisdiele {
         pushToLocalStorage(this);
         onClickclear();
         onClickBasket();
+        if (this.kategorie == "Stecksachen") {
+            isTopping = true;
+        }
     }
 
     function pushToLocalStorage(_eis: Eis): void {
@@ -195,9 +198,7 @@ namespace Eisdiele {
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
 
-            if (eis.kategorie == "Stecksachen") {
-                isTopping = true;
-            } else { isTopping = false; }
+             
 
 
 
