@@ -24,6 +24,7 @@ namespace Eisdiele {
     let eis: Eis;
     let constantNumber: number;
     let isTopping: Boolean = false;
+    let lastString: string;
     export let articleCounter: number;
     window.addEventListener("load", init);
     appendFunction();
@@ -199,7 +200,7 @@ namespace Eisdiele {
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
-           
+            lastString = eis.kategorie;
 
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
@@ -257,7 +258,9 @@ namespace Eisdiele {
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
-
+        if (lastString == "Eis") {
+            isTopping = false;
+        }
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
         onClickclear();

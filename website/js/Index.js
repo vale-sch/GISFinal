@@ -15,6 +15,7 @@ var Eisdiele;
     let eis;
     let constantNumber;
     let isTopping = false;
+    let lastString;
     window.addEventListener("load", init);
     appendFunction();
     async function init(_event) {
@@ -166,6 +167,7 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
+            lastString = eis.kategorie;
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");
@@ -217,6 +219,9 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
+        if (lastString == "Eis") {
+            isTopping = false;
+        }
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
         onClickclear();
