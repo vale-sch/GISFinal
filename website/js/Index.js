@@ -119,18 +119,16 @@ var Eisdiele;
                 }
             }
             if (localStorage.length > 0) {
-                console.log(isTopping);
                 if (!isTopping) {
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     if (jsonObj[index].kategorie == "Eis") {
-                        console.log(lastString);
-                        if (lastString == "Eis") {
-                            if (jsonObj[index].kategorie != "Eis" && "Waffel")
-                                formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                        }
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                    }
+                    if (lastString == "Eis") {
+                        if (jsonObj[index].kategorie != "Eis" && "Waffel")
+                            formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
                 }
                 if (isTopping) {
