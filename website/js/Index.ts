@@ -146,7 +146,7 @@ namespace Eisdiele {
                 }
             }
             if (localStorage.length > 0) {
-                
+                console.log(isTopping);
                 if (!isTopping) {
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
