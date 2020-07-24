@@ -185,7 +185,7 @@ namespace Eisdiele {
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator(): void {
-
+        isTopping = false;
         if (localStorage.length > 0) {
             let actualCreation: HTMLParagraphElement = document.createElement("p");
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
@@ -194,11 +194,10 @@ namespace Eisdiele {
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
-            if (eis.kategorie == "Stecksachen" || eis.kategorie == "Streusel" || eis.kategorie == "Soßen") {
+            if (eis.kategorie != "Eis") {
                 isTopping = true;
-            } else {
-                isTopping = false;
-            }
+            } 
+            
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
 

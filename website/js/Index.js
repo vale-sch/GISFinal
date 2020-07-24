@@ -156,6 +156,7 @@ var Eisdiele;
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator() {
+        isTopping = false;
         if (localStorage.length > 0) {
             let actualCreation = document.createElement("p");
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
@@ -164,11 +165,8 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (eis.kategorie == "Stecksachen" || eis.kategorie == "Streusel" || eis.kategorie == "Soßen") {
+            if (eis.kategorie != "Eis") {
                 isTopping = true;
-            }
-            else {
-                isTopping = false;
             }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
