@@ -11,6 +11,7 @@ namespace Eisdiele {
         name: string;
     }
     let jsonObj: Eis[] = [];
+
     let setupDiv: HTMLDivElement;
     let waffelDiv: HTMLDivElement;
     let eisDiv: HTMLDivElement;
@@ -20,12 +21,14 @@ namespace Eisdiele {
     let formatDiv: HTMLDivElement;
     let iceDiv: HTMLDivElement;
     let img: HTMLImageElement;
+
     let amount: number = 1;
     let eis: Eis;
     let constantNumber: number;
     let isTopping: Boolean = false;
     let lastString: string;
     export let articleCounter: number;
+
     window.addEventListener("load", init);
     appendFunction();
 
@@ -153,7 +156,7 @@ namespace Eisdiele {
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie != "Waffel")
+                    if (jsonObj[index].kategorie == "Eis")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
                 if (isTopping) {
