@@ -165,7 +165,7 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (eis.kategorie != "Eis" || "Waffel") {
+            if (eis.kategorie == "Stecksachen") {
                 isTopping = true;
             }
             else {

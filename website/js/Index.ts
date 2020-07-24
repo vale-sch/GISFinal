@@ -195,7 +195,7 @@ namespace Eisdiele {
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
 
-            if (eis.kategorie != "Eis" || "Waffel") {
+            if (eis.kategorie == "Stecksachen") {
                 isTopping = true;
             } else { isTopping = false; }
 
