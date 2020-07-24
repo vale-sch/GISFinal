@@ -156,8 +156,16 @@ namespace Eisdiele {
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie != "Waffel")
-                        formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                    if (jsonObj[index].kategorie == "Eis") {
+                        if (lastString == "Eis") {
+                            if (jsonObj[index].kategorie != "Waffel" && "Eis") {
+                                formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                            }
+                            formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                        } 
+                    }
+
+
                 }
                 if (isTopping) {
                     let button: HTMLButtonElement = document.createElement("button");
