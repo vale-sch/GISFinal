@@ -147,9 +147,8 @@ var Eisdiele;
         amount++;
         this.stück = amount;
         pushToLocalStorage(this);
-        onClickclearSetupDiv(setupDiv);
+        onClickclear();
         onClickBasket();
-        onClickclearIceDiv(iceDiv);
     }
     function pushToLocalStorage(_eis) {
         let inhalt = JSON.stringify(_eis);
@@ -220,20 +219,11 @@ var Eisdiele;
     function onClickDeleteThis(_click) {
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
-        onClickclearIceDiv(iceDiv);
+        onClickclear();
     }
-    function onClickclearIceDiv(_iceDiv) {
+    function onClickclear() {
         iceDiv.innerHTML = "";
         theIceCreator();
-        setupDiv.innerHTML = "";
-        waffelDiv.innerHTML = "";
-        eisDiv.innerHTML = "";
-        stecksachenDiv.innerHTML = "";
-        soßenDiv.innerHTML = "";
-        streuselDiv.innerHTML = "";
-        generateIceSortiment();
-    }
-    function onClickclearSetupDiv(_iceDiv) {
         setupDiv.innerHTML = "";
         waffelDiv.innerHTML = "";
         eisDiv.innerHTML = "";

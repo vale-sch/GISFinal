@@ -176,10 +176,8 @@ namespace Eisdiele {
         amount++;
         this.stück = amount;
         pushToLocalStorage(this);
-        onClickclearSetupDiv(setupDiv);
+        onClickclear();
         onClickBasket();
-
-        onClickclearIceDiv(iceDiv);
     }
 
     function pushToLocalStorage(_eis: Eis): void {
@@ -261,10 +259,10 @@ namespace Eisdiele {
     function onClickDeleteThis(this: Eis, _click: Event): void {
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
-        onClickclearIceDiv(iceDiv);
+        onClickclear();
     }
 
-    function onClickclearIceDiv(_iceDiv: HTMLDivElement): void {
+    function onClickclear(): void {
 
         iceDiv.innerHTML = "";
         theIceCreator();
@@ -278,15 +276,7 @@ namespace Eisdiele {
         generateIceSortiment();
 
     }
-    function onClickclearSetupDiv(_iceDiv: HTMLDivElement): void {
-        setupDiv.innerHTML = "";
-        waffelDiv.innerHTML = "";
-        eisDiv.innerHTML = "";
-        stecksachenDiv.innerHTML = "";
-        soßenDiv.innerHTML = "";
-        streuselDiv.innerHTML = "";
-        generateIceSortiment();
-    }
+ 
 
     function onClickBasket(): void {
         articleCounter = localStorage.length;
