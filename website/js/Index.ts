@@ -146,6 +146,7 @@ namespace Eisdiele {
                 }
             }
             if (localStorage.length >= 1) {
+                console.log("isTopping? = " + isTopping);
                 if (!isTopping) {
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
@@ -172,7 +173,6 @@ namespace Eisdiele {
         if (localStorage.length == 0) {
             amount = 0;
         }
-
         amount++;
         this.stück = amount;
         pushToLocalStorage(this);
@@ -196,7 +196,9 @@ namespace Eisdiele {
             eis = <Eis>JSON.parse(jsonString);
             if (eis.kategorie == "Stecksachen" || eis.kategorie == "Streusel" || eis.kategorie == "Soßen") {
                 isTopping = true;
-            } else isTopping = false;
+            } else {
+                isTopping = false;
+            } 
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
 
@@ -263,7 +265,6 @@ namespace Eisdiele {
     }
 
     function onClickclear(): void {
-
         iceDiv.innerHTML = "";
         theIceCreator();
 
@@ -274,9 +275,7 @@ namespace Eisdiele {
         soßenDiv.innerHTML = "";
         streuselDiv.innerHTML = "";
         generateIceSortiment();
-
     }
-
 
     function onClickBasket(): void {
         articleCounter = localStorage.length;

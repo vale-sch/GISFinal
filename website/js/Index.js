@@ -118,6 +118,7 @@ var Eisdiele;
                 }
             }
             if (localStorage.length >= 1) {
+                console.log("isTopping? = " + isTopping);
                 if (!isTopping) {
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
@@ -166,8 +167,9 @@ var Eisdiele;
             if (eis.kategorie == "Stecksachen" || eis.kategorie == "Streusel" || eis.kategorie == "Soßen") {
                 isTopping = true;
             }
-            else
+            else {
                 isTopping = false;
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");
