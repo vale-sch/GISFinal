@@ -145,7 +145,19 @@ var Eisdiele;
         if (localStorage.length == 0) {
             amount = 0;
         }
-        if (this.kategorie == "Stecksachen" || "Streusel" || "Soßen") {
+        if (this.kategorie == "Stecksachen") {
+            isTopping = true;
+        }
+        else {
+            isTopping = false;
+        }
+        if (this.kategorie == "Streusel") {
+            isTopping = true;
+        }
+        else {
+            isTopping = false;
+        }
+        if (this.kategorie == "Soßen") {
             isTopping = true;
         }
         else {
