@@ -158,7 +158,7 @@ namespace Eisdiele {
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     if (jsonObj[index].kategorie == "Eis") {
                         if (lastString == "Eis") {
-                            if (jsonObj[index].kategorie != "Waffel" && "Eis") {
+                            if (jsonObj[index].kategorie == "Stecksachen") {
                                 formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                             } 
                         } 
