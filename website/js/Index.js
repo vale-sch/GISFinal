@@ -230,6 +230,7 @@ var Eisdiele;
         soßenDiv.innerHTML = "";
         streuselDiv.innerHTML = "";
         generateIceSortiment();
+        onClickBasket();
     }
     function onClickBasket() {
         Eisdiele.articleCounter = localStorage.length;

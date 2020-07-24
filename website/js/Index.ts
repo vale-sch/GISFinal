@@ -270,6 +270,7 @@ namespace Eisdiele {
         soßenDiv.innerHTML = "";
         streuselDiv.innerHTML = "";
         generateIceSortiment();
+        onClickBasket();
     }
 
     function onClickBasket(): void {
