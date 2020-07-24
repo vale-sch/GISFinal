@@ -173,7 +173,7 @@ var Eisdiele;
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
             lastString = eis.kategorie;
-            if (index == 1) {
+            if (eis.kategorie == "Eis") {
                 isIceString = eis.kategorie;
             }
             img = document.createElement("img");

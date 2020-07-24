@@ -212,7 +212,7 @@ namespace Eisdiele {
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
             lastString = eis.kategorie;
-            if (index == 1) {
+            if (eis.kategorie == "Eis") {
                 isIceString = eis.kategorie;
             }
             img = document.createElement("img");
