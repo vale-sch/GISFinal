@@ -130,7 +130,7 @@ var Eisdiele;
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie == "Stecksachen" || jsonObj[index].kategorie == "Streusel" || jsonObj[index].kategorie == "Soßen")
+                    if (jsonObj[index].kategorie == "Stecksachen" || "Streusel" || "Soßen")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
@@ -165,10 +165,8 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (localStorage.length > 1) {
-                if (eis.kategorie != "Eis") {
-                    isTopping = true;
-                }
+            if (eis.kategorie != "Eis" || "Waffel") {
+                isTopping = true;
             }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
