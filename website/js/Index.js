@@ -137,6 +137,7 @@ var Eisdiele;
         }
     }
     function onClickCreate(_click) {
+        isTopping = false;
         if (localStorage.length > 0) {
             if (this.kategorie == "Eis") {
                 constantNumber = localStorage.length;
