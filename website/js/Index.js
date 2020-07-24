@@ -16,6 +16,7 @@ var Eisdiele;
     let constantNumber;
     let isTopping = false;
     let lastString;
+    let isIceString;
     window.addEventListener("load", init);
     appendFunction();
     async function init(_event) {
@@ -126,7 +127,7 @@ var Eisdiele;
                     if (jsonObj[index].kategorie == "Eis") {
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
-                    if (lastString == "Eis") {
+                    if (isIceString == "Eis") {
                         if (jsonObj[index].kategorie != "Eis" && "Waffel")
                             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
@@ -172,6 +173,9 @@ var Eisdiele;
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
             lastString = eis.kategorie;
+            if (index == 1) {
+                isIceString = eis.kategorie;
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");

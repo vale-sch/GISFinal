@@ -27,6 +27,7 @@ namespace Eisdiele {
     let constantNumber: number;
     let isTopping: Boolean = false;
     let lastString: string;
+    let isIceString: string;
     export let articleCounter: number;
 
     window.addEventListener("load", init);
@@ -156,13 +157,13 @@ namespace Eisdiele {
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     if (jsonObj[index].kategorie == "Eis") {
-                       
+
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
-                    if (lastString == "Eis") {
+                    if (isIceString == "Eis") {
                         if (jsonObj[index].kategorie != "Eis" && "Waffel")
                             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                    } 
+                    }
 
 
                 }
@@ -211,7 +212,9 @@ namespace Eisdiele {
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
             lastString = eis.kategorie;
-
+            if (index == 1) {
+                isIceString = eis.kategorie;
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
 
