@@ -22,7 +22,7 @@ namespace Eisdiele {
     let amount: number = 1;
     let eis: Eis;
     let constantNumber: number;
-
+    let isTopping: Boolean = false;
     export let articleCounter: number;
     window.addEventListener("load", init);
     appendFunction();
@@ -66,7 +66,7 @@ namespace Eisdiele {
         hrElement1.style.height = "0px";
         hrElement2.style.height = "0px";
         hrElement3.style.height = "0px";
-     
+
 
         let eisHeadingText: HTMLHeadingElement = <HTMLHeadingElement>document.createElement("h1");
         setupDiv.appendChild(eisDiv);
@@ -147,17 +147,18 @@ namespace Eisdiele {
             }
             if (localStorage.length >= 1) {
                 if (jsonObj[index].kategorie == "Eis") {
-                    let button: HTMLButtonElement = document.createElement("button");
-                    button.setAttribute("class", "creationButton");
-                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                }
-                if (localStorage.length >= 2) {
-                    let button: HTMLButtonElement = document.createElement("button");
-                    button.setAttribute("class", "creationButton");
-                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie == "Stecksachen" || jsonObj[index].kategorie == "Streusel" || jsonObj[index].kategorie == "Soßen") {
+                    if (!isTopping) {
+                        let button: HTMLButtonElement = document.createElement("button");
+                        button.setAttribute("class", "creationButton");
+                        button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                    } else {
+                        let button: HTMLButtonElement = document.createElement("button");
+                        button.setAttribute("class", "creationButton");
+                        button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
+                        if (jsonObj[index].kategorie == "Stecksachen" || jsonObj[index].kategorie == "Streusel" || jsonObj[index].kategorie == "Soßen") {
+                            formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                        }
                     }
                 }
             }
@@ -187,6 +188,7 @@ namespace Eisdiele {
         localStorage.setItem(_eis.stück.toString(), inhalt);
     }
     function theIceCreator(): void {
+
         if (localStorage.length > 0) {
             let actualCreation: HTMLParagraphElement = document.createElement("p");
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
@@ -195,7 +197,9 @@ namespace Eisdiele {
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
-
+            if (eis.kategorie == "Stecksachen" || eis.kategorie == "Streusel" || eis.kategorie == "Soßen") {
+                isTopping = true;
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
 

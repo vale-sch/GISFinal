@@ -14,6 +14,7 @@ var Eisdiele;
     let amount = 1;
     let eis;
     let constantNumber;
+    let isTopping = false;
     window.addEventListener("load", init);
     appendFunction();
     async function init(_event) {
@@ -118,17 +119,19 @@ var Eisdiele;
             }
             if (localStorage.length >= 1) {
                 if (jsonObj[index].kategorie == "Eis") {
-                    let button = document.createElement("button");
-                    button.setAttribute("class", "creationButton");
-                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                }
-                if (localStorage.length >= 2) {
-                    let button = document.createElement("button");
-                    button.setAttribute("class", "creationButton");
-                    button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie == "Stecksachen" || jsonObj[index].kategorie == "Streusel" || jsonObj[index].kategorie == "Soßen") {
+                    if (!isTopping) {
+                        let button = document.createElement("button");
+                        button.setAttribute("class", "creationButton");
+                        button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                    }
+                    else {
+                        let button = document.createElement("button");
+                        button.setAttribute("class", "creationButton");
+                        button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
+                        if (jsonObj[index].kategorie == "Stecksachen" || jsonObj[index].kategorie == "Streusel" || jsonObj[index].kategorie == "Soßen") {
+                            formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
+                        }
                     }
                 }
             }
@@ -163,6 +166,9 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
+            if (eis.kategorie == "Stecksachen" || eis.kategorie == "Streusel" || eis.kategorie == "Soßen") {
+                isTopping = true;
+            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");
