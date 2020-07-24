@@ -146,7 +146,7 @@ var Eisdiele;
             amount = 0;
         }
         alert(this.kategorie);
-        if (this.kategorie == "Stecksachen") {
+        if (this.kategorie == "Stecksachen" || "Streusel" || "Soßen") {
             isTopping = true;
         }
         amount++;
