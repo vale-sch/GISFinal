@@ -130,7 +130,7 @@ var Eisdiele;
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie == "Stecksachen" || "Streusel" || "Soßen")
+                    if (jsonObj[index].kategorie == "Stecksachen" || jsonObj[index].kategorie == "Streusel" || jsonObj[index].kategorie == "Soßen")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
