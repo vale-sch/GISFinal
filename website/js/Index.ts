@@ -199,7 +199,6 @@ namespace Eisdiele {
         this.stück = amount;
         pushToLocalStorage(this);
         onClickClearandReload();
-        onClickClearandReload();
         onClickBasket();
     }
 
@@ -226,8 +225,8 @@ namespace Eisdiele {
             img.setAttribute("src", eis.image);
 
             let informationTag: HTMLAnchorElement = <HTMLAnchorElement>document.createElement("a");
-            informationTag.setAttribute("class", "fas fa-times");
-            informationTag.setAttribute("href", "#fas fa-times");
+           
+
 
             informationTag.addEventListener("click", onClickDeleteThis.bind(eis));
 
@@ -253,7 +252,7 @@ namespace Eisdiele {
                     img.style.bottom += (eis.stück * 95) + 120 + "px";
                     pictureDiv.appendChild(img);
                 }
-            } 
+            }
 
             if (eis.kategorie == "Stecksachen") {
                 isToppingString = eis.kategorie;
@@ -277,7 +276,10 @@ namespace Eisdiele {
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
             }
-
+            if (isIceString == "-999") {
+                informationTag.setAttribute("class", "fas fa-times");
+                informationTag.setAttribute("href", "#fas fa-times");
+            }
 
 
         }
@@ -293,13 +295,13 @@ namespace Eisdiele {
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
-        
-        
+
+
 
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
+
         
-        onClickClearandReload();
         onClickClearandReload();
 
     }
@@ -309,7 +311,7 @@ namespace Eisdiele {
         theIceCreator();
         iceDiv.innerHTML = "";
         theIceCreator();
-       
+
         setupDiv.innerHTML = "";
         waffelDiv.innerHTML = "";
         eisDiv.innerHTML = "";
