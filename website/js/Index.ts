@@ -230,6 +230,7 @@ namespace Eisdiele {
             iceDiv.appendChild(informationTag).innerHTML = eis.stück + "." + "-" + eis.name;
             img.style.left = "18%";
             if (eis.kategorie == "Waffel") {
+                isIceString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom = "0%";
                 pictureDiv.appendChild(img);
