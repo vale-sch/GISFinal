@@ -160,8 +160,6 @@ namespace Eisdiele {
                     if (jsonObj[index].kategorie == "Eis") {
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
-                    console.log("isIceString: " + isIceString);
-                    console.log("isToppingString: " + isToppingString);
                     if (isIceString == "Eis") {
                         if (jsonObj[index].kategorie == "Stecksachen")
                             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
@@ -172,8 +170,6 @@ namespace Eisdiele {
                     }
                 }
                 if (isTopping) {
-                    console.log("isIceString: " + isIceString);
-                    console.log("isToppingString: " + isToppingString);
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
@@ -278,13 +274,13 @@ namespace Eisdiele {
             } else isToppingString = "-999";
 
         }
-
+        console.log("isIceString: " + isIceString);
+        console.log("isToppingString: " + isToppingString);
         console.log("------localstorage-------");
         console.log(localStorage);
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
-        console.log("ToppingString:" + isToppingString);
         if (isToppingString != "Streusel") {
             isTopping = false;
         }
