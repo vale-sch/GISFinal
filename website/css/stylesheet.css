@@ -561,4 +561,13 @@ nav a:hover {
         color: black;
         margin: auto;
     }
+    #warenKorbArtikel {
+        display: grid;
+        grid-template-columns: auto;
+        position: absolute;
+        text-align: center;
+        width: 60%;
+        right: 0%;
+        top: -2%;
+    }
 }
