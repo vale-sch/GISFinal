@@ -242,6 +242,7 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
+        onClickClearandReload();
         if (isToppingString != "-999") {
             isTopping = true;
         }
@@ -251,18 +252,10 @@ var Eisdiele;
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
         onClickClearandReload();
-        onClickClearandReload();
     }
     function onClickClearandReload() {
         iceDiv.innerHTML = "";
         theIceCreator();
-        setupDiv.innerHTML = "";
-        waffelDiv.innerHTML = "";
-        eisDiv.innerHTML = "";
-        stecksachenDiv.innerHTML = "";
-        soßenDiv.innerHTML = "";
-        streuselDiv.innerHTML = "";
-        generateIceSortiment();
         iceDiv.innerHTML = "";
         theIceCreator();
         setupDiv.innerHTML = "";

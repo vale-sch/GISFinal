@@ -287,6 +287,7 @@ namespace Eisdiele {
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
+        onClickClearandReload();
         if (isToppingString != "-999") {
             isTopping = true;
         } else {
@@ -297,26 +298,16 @@ namespace Eisdiele {
         amount = localStorage.length;
         
         onClickClearandReload();
-        onClickClearandReload();
+       
 
     }
 
     function onClickClearandReload(): void {
         iceDiv.innerHTML = "";
         theIceCreator();
-       
-       
-        setupDiv.innerHTML = "";
-        waffelDiv.innerHTML = "";
-        eisDiv.innerHTML = "";
-        stecksachenDiv.innerHTML = "";
-        soßenDiv.innerHTML = "";
-        streuselDiv.innerHTML = "";
-        generateIceSortiment();
-
         iceDiv.innerHTML = "";
         theIceCreator();
-        
+       
         setupDiv.innerHTML = "";
         waffelDiv.innerHTML = "";
         eisDiv.innerHTML = "";
