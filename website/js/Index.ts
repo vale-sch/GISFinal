@@ -162,7 +162,7 @@ namespace Eisdiele {
                     }
                     console.log(isIceString);
                     if (isIceString == "Eis") {
-                        if (jsonObj[index].kategorie != "Eis" && "Waffel")
+                        if (jsonObj[index].kategorie != "Waffel")
                             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
                 }
