@@ -305,7 +305,15 @@ namespace Eisdiele {
     function onClickclear(): void {
         iceDiv.innerHTML = "";
         theIceCreator();
-
+        iceDiv.innerHTML = "";
+        theIceCreator();
+        setupDiv.innerHTML = "";
+        waffelDiv.innerHTML = "";
+        eisDiv.innerHTML = "";
+        stecksachenDiv.innerHTML = "";
+        soßenDiv.innerHTML = "";
+        streuselDiv.innerHTML = "";
+        generateIceSortiment();
         setupDiv.innerHTML = "";
         waffelDiv.innerHTML = "";
         eisDiv.innerHTML = "";

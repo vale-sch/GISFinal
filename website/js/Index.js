@@ -261,6 +261,15 @@ var Eisdiele;
     function onClickclear() {
         iceDiv.innerHTML = "";
         theIceCreator();
+        iceDiv.innerHTML = "";
+        theIceCreator();
+        setupDiv.innerHTML = "";
+        waffelDiv.innerHTML = "";
+        eisDiv.innerHTML = "";
+        stecksachenDiv.innerHTML = "";
+        soßenDiv.innerHTML = "";
+        streuselDiv.innerHTML = "";
+        generateIceSortiment();
         setupDiv.innerHTML = "";
         waffelDiv.innerHTML = "";
         eisDiv.innerHTML = "";
