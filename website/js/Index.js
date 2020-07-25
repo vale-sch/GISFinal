@@ -245,13 +245,10 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
-        if (isToppingString != "Streusel") {
-            isTopping = false;
+        if (isToppingString != "-999") {
+            isTopping = true;
         }
-        if (isToppingString != "Soßen") {
-            isTopping = false;
-        }
-        if (isToppingString != "Stecksachen") {
+        else {
             isTopping = false;
         }
         localStorage.removeItem(this.stück.toString());
