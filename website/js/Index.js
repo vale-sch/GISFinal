@@ -177,18 +177,6 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (eis.kategorie == "Streusel") {
-                isToppingString = eis.kategorie;
-            }
-            if (eis.kategorie == "Stecksachen") {
-                isToppingString = eis.kategorie;
-            }
-            if (eis.kategorie == "Soßen") {
-                isToppingString = eis.kategorie;
-            }
-            if (eis.kategorie == "Eis") {
-                isIceString = eis.kategorie;
-            }
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");
@@ -207,6 +195,7 @@ var Eisdiele;
                 pictureDiv.appendChild(img);
             }
             else if (eis.kategorie == "Eis") {
+                isIceString = eis.kategorie;
                 if (eis.stück == 2) {
                     img.style.position = "fixed";
                     img.style.bottom += "300px";
@@ -219,6 +208,7 @@ var Eisdiele;
                 }
             }
             if (eis.kategorie == "Stecksachen") {
+                isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 100) + 300 + "px";
                 let rotateNumber = index * 3;
@@ -226,11 +216,13 @@ var Eisdiele;
                 pictureDiv.appendChild(img);
             }
             if (eis.kategorie == "Streusel") {
+                isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
                 pictureDiv.appendChild(img);
             }
             if (eis.kategorie == "Soßen") {
+                isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
