@@ -127,8 +127,9 @@ var Eisdiele;
                     if (jsonObj[index].kategorie == "Eis") {
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
+                    console.log(isIceString);
                     if (isIceString == "Eis") {
-                        if (jsonObj[index].kategorie != "Eis" && "Waffel")
+                        if (jsonObj[index].kategorie != "Eis" || "Waffel")
                             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
                 }
@@ -136,7 +137,7 @@ var Eisdiele;
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
-                    if (jsonObj[index].kategorie != "Eis" && "Waffel")
+                    if (jsonObj[index].kategorie != "Eis" || "Waffel")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
@@ -172,7 +173,7 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (eis.kategorie == "Streusel" && "Stecksachen" && "Soßen") {
+            if (eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
                 isToppingString = eis.kategorie;
             }
             if (eis.kategorie == "Eis") {
@@ -229,7 +230,7 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
-        if (isToppingString != "Streusel" && "Stecksachen" && "Soßen") {
+        if (isToppingString != "Streusel" || "Stecksachen" || "Soßen") {
             isTopping = false;
         }
         localStorage.removeItem(this.stück.toString());
