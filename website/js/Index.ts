@@ -313,6 +313,17 @@ namespace Eisdiele {
         soßenDiv.innerHTML = "";
         streuselDiv.innerHTML = "";
         generateIceSortiment();
+
+        iceDiv.innerHTML = "";
+        theIceCreator();
+        
+        setupDiv.innerHTML = "";
+        waffelDiv.innerHTML = "";
+        eisDiv.innerHTML = "";
+        stecksachenDiv.innerHTML = "";
+        soßenDiv.innerHTML = "";
+        streuselDiv.innerHTML = "";
+        generateIceSortiment();
         onClickBasket();
     }
 
