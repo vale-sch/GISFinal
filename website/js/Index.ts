@@ -214,6 +214,7 @@ namespace Eisdiele {
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
         }
         isToppingString = "-999";
+        isIceString = "-999";
         for (let index: number = 0; index <= localStorage.length - 1; index++) {
 
 
@@ -252,7 +253,7 @@ namespace Eisdiele {
                     img.style.bottom += (eis.stück * 95) + 120 + "px";
                     pictureDiv.appendChild(img);
                 }
-            } else isIceString = "-999";
+            } 
 
             if (eis.kategorie == "Stecksachen") {
                 isToppingString = eis.kategorie;
@@ -287,7 +288,7 @@ namespace Eisdiele {
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
-        onClickClearandReload();
+        
         if (isToppingString != "-999") {
             isTopping = true;
         } else {
@@ -298,7 +299,7 @@ namespace Eisdiele {
         amount = localStorage.length;
         
         onClickClearandReload();
-       
+        onClickClearandReload();
 
     }
 

@@ -179,6 +179,7 @@ var Eisdiele;
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
         }
         isToppingString = "-999";
+        isIceString = "-999";
         for (let index = 0; index <= localStorage.length - 1; index++) {
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
@@ -213,8 +214,6 @@ var Eisdiele;
                     pictureDiv.appendChild(img);
                 }
             }
-            else
-                isIceString = "-999";
             if (eis.kategorie == "Stecksachen") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
@@ -242,7 +241,6 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
-        onClickClearandReload();
         if (isToppingString != "-999") {
             isTopping = true;
         }
@@ -251,6 +249,7 @@ var Eisdiele;
         }
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
+        onClickClearandReload();
         onClickClearandReload();
     }
     function onClickClearandReload() {
