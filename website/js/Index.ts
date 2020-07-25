@@ -168,6 +168,8 @@ namespace Eisdiele {
                     }
                 }
                 if (isTopping) {
+                    console.log("isIceString: " + isIceString);
+                    console.log("isToppingString: " + isToppingString);
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
@@ -230,7 +232,6 @@ namespace Eisdiele {
             iceDiv.appendChild(informationTag).innerHTML = eis.stück + "." + "-" + eis.name;
             img.style.left = "18%";
             if (eis.kategorie == "Waffel") {
-                isIceString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom = "0%";
                 pictureDiv.appendChild(img);
