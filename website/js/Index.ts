@@ -152,8 +152,8 @@ namespace Eisdiele {
                 }
             }
             if (localStorage.length > 0) {
-                if (!isTopping) {
-                    console.log("isTOpping?" + isTopping);
+                console.log("isTOpping?" + isTopping);
+                if (!isTopping) { 
                     let button: HTMLButtonElement = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
@@ -175,9 +175,9 @@ namespace Eisdiele {
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     if (jsonObj[index].kategorie == "Stecksachen")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                    if (jsonObj[index].kategorie != "Soßen")
+                    if (jsonObj[index].kategorie == "Soßen")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                    if (jsonObj[index].kategorie != "Streusel")
+                    if (jsonObj[index].kategorie == "Streusel")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
@@ -214,8 +214,8 @@ namespace Eisdiele {
         }
 
         for (let index: number = 0; index <= localStorage.length - 1; index++) {
-            isIceString = "-999";
-            isToppingString = "-999";
+
+
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
@@ -251,7 +251,7 @@ namespace Eisdiele {
                     img.style.bottom += (eis.stück * 95) + 120 + "px";
                     pictureDiv.appendChild(img);
                 }
-            }
+            } else isIceString = "-999";
             if (eis.kategorie == "Stecksachen") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
@@ -259,19 +259,19 @@ namespace Eisdiele {
                 let rotateNumber: number = index * 3;
                 img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
                 pictureDiv.appendChild(img);
-            }
+            } else isToppingString = "-999";
             if (eis.kategorie == "Streusel") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
                 pictureDiv.appendChild(img);
-            }
+            } else isToppingString = "-999";
             if (eis.kategorie == "Soßen") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
-            }
+            } else isToppingString = "-999";
 
         }
 

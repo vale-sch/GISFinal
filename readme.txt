@@ -4,8 +4,6 @@ Um auf die Seiten zu gelangen:
 
 ICE Shop: https://vale-sch.github.io/GISFinal/website/index.html
 
-Administrator Seite: https://vale-sch.github.io/GISFinal/website/administrator.html
-
 
 
 
@@ -25,15 +23,29 @@ Und über den lokalen Server:
 
 gestartet
 
+JSON-Datei-Struktur:
 
-Datenbankstruktur
-{
-_id:"5f0e2f52e0e9ba001742ef43",
-Vorname:"Valentin",
-Nachname:"Schmidberger",
-Email:"valentinschmidberger@try.de",
-Passwort:"jojojojojpaswort",
-Bestellung: ["Waffel", "Eis", "Eis", "Eis", "Stecksachen", "Soßen", "Streusel"],
-Gesamtpreis:"11.4"
-    },
+eisArtikel:[{
+        "kategorie": string,
+        "image": "string,
+        "beschreibung": string,
+        "preis": number,
+        "stück": number,
+        "name": string
+    }
+]
+Datenbankstruktur:
+Orders
+|- Buyers
+   |-Administrator.html & Warenkorb.html
+          |- _iD: string,
+          |- Vorname: string,
+          |- Nachname: string,
+          |- Email: string,
+          |- Passwort: string,
+          |- Waffel: string,
+          |- Eis: string[],
+          |- Topinngs: string[],
+          |- Gesamtpreis: string;
+
 

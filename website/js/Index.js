@@ -120,8 +120,8 @@ var Eisdiele;
                 }
             }
             if (localStorage.length > 0) {
+                console.log("isTOpping?" + isTopping);
                 if (!isTopping) {
-                    console.log("isTOpping?" + isTopping);
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
@@ -143,9 +143,9 @@ var Eisdiele;
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
                     if (jsonObj[index].kategorie == "Stecksachen")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                    if (jsonObj[index].kategorie != "Soßen")
+                    if (jsonObj[index].kategorie == "Soßen")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
-                    if (jsonObj[index].kategorie != "Streusel")
+                    if (jsonObj[index].kategorie == "Streusel")
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                 }
             }
@@ -178,8 +178,6 @@ var Eisdiele;
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
         }
         for (let index = 0; index <= localStorage.length - 1; index++) {
-            isIceString = "-999";
-            isToppingString = "-999";
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
@@ -213,6 +211,8 @@ var Eisdiele;
                     pictureDiv.appendChild(img);
                 }
             }
+            else
+                isIceString = "-999";
             if (eis.kategorie == "Stecksachen") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
@@ -221,18 +221,24 @@ var Eisdiele;
                 img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
                 pictureDiv.appendChild(img);
             }
+            else
+                isToppingString = "-999";
             if (eis.kategorie == "Streusel") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
                 pictureDiv.appendChild(img);
             }
+            else
+                isToppingString = "-999";
             if (eis.kategorie == "Soßen") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
             }
+            else
+                isToppingString = "-999";
         }
         console.log("------localstorage-------");
         console.log(localStorage);
