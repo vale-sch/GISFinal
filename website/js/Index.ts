@@ -212,7 +212,7 @@ namespace Eisdiele {
             let actualCreation: HTMLParagraphElement = document.createElement("p");
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
         }
-
+        isToppingString = "-999";
         for (let index: number = 0; index <= localStorage.length - 1; index++) {
 
 
@@ -252,32 +252,30 @@ namespace Eisdiele {
                     pictureDiv.appendChild(img);
                 }
             } else isIceString = "-999";
-            if (eis.kategorie != "Eis") {
-                if (eis.kategorie == "Stecksachen") {
-                    isToppingString = eis.kategorie;
-                    img.style.position = "fixed";
-                    img.style.bottom += (constantNumber * 100) + 300 + "px";
-                    let rotateNumber: number = index * 3;
-                    img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
-                    pictureDiv.appendChild(img);
-                }
 
-                if (eis.kategorie == "Streusel") {
-                    isToppingString = eis.kategorie;
-                    img.style.position = "fixed";
-                    img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
-                    pictureDiv.appendChild(img);
-                }
-
-                if (eis.kategorie == "Soßen") {
-                    isToppingString = eis.kategorie;
-                    img.style.position = "fixed";
-                    img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
-                    pictureDiv.appendChild(img);
-                }
-            } else {
-                isToppingString = "-999";
+            if (eis.kategorie == "Stecksachen") {
+                isToppingString = eis.kategorie;
+                img.style.position = "fixed";
+                img.style.bottom += (constantNumber * 100) + 300 + "px";
+                let rotateNumber: number = index * 3;
+                img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
+                pictureDiv.appendChild(img);
             }
+
+            if (eis.kategorie == "Streusel") {
+                isToppingString = eis.kategorie;
+                img.style.position = "fixed";
+                img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
+                pictureDiv.appendChild(img);
+            }
+
+            if (eis.kategorie == "Soßen") {
+                isToppingString = eis.kategorie;
+                img.style.position = "fixed";
+                img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
+                pictureDiv.appendChild(img);
+            }
+
 
 
         }
@@ -300,10 +298,6 @@ namespace Eisdiele {
     }
 
     function onClickclear(): void {
-        iceDiv.innerHTML = "";
-        theIceCreator();
-        iceDiv.innerHTML = "";
-        theIceCreator();
         setupDiv.innerHTML = "";
         waffelDiv.innerHTML = "";
         eisDiv.innerHTML = "";
@@ -311,6 +305,11 @@ namespace Eisdiele {
         soßenDiv.innerHTML = "";
         streuselDiv.innerHTML = "";
         generateIceSortiment();
+        
+        iceDiv.innerHTML = "";
+        theIceCreator();
+       
+       
         setupDiv.innerHTML = "";
         waffelDiv.innerHTML = "";
         eisDiv.innerHTML = "";
