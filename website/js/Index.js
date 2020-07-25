@@ -165,7 +165,8 @@ var Eisdiele;
         amount = localStorage.length + 1;
         this.stück = amount;
         pushToLocalStorage(this);
-        onClickclear();
+        onClickClearandReload();
+        onClickClearandReload();
         onClickBasket();
     }
     function pushToLocalStorage(_eis) {
@@ -249,16 +250,10 @@ var Eisdiele;
         }
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
-        onClickclear();
+        onClickClearandReload();
+        onClickClearandReload();
     }
-    function onClickclear() {
-        setupDiv.innerHTML = "";
-        waffelDiv.innerHTML = "";
-        eisDiv.innerHTML = "";
-        stecksachenDiv.innerHTML = "";
-        soßenDiv.innerHTML = "";
-        streuselDiv.innerHTML = "";
-        generateIceSortiment();
+    function onClickClearandReload() {
         iceDiv.innerHTML = "";
         theIceCreator();
         setupDiv.innerHTML = "";
