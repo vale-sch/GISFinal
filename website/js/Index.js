@@ -177,7 +177,13 @@ var Eisdiele;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
-            if (eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
+            if (eis.kategorie == "Streusel") {
+                isToppingString = eis.kategorie;
+            }
+            if (eis.kategorie == "Stecksachen") {
+                isToppingString = eis.kategorie;
+            }
+            if (eis.kategorie == "Soßen") {
                 isToppingString = eis.kategorie;
             }
             if (eis.kategorie == "Eis") {

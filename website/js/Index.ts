@@ -213,7 +213,13 @@ namespace Eisdiele {
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
-            if (eis.kategorie == "Streusel" || "Stecksachen" || "Soßen") {
+            if (eis.kategorie == "Streusel") {
+                isToppingString = eis.kategorie;
+            }
+            if (eis.kategorie == "Stecksachen") {
+                isToppingString = eis.kategorie;
+            }
+            if (eis.kategorie == "Soßen") {
                 isToppingString = eis.kategorie;
             }
 
