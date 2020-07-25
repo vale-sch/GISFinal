@@ -198,7 +198,7 @@ var Eisdiele;
                 img.style.bottom = "0%";
                 pictureDiv.appendChild(img);
             }
-            else if (eis.kategorie == "Eis") {
+            if (eis.kategorie == "Eis") {
                 isIceString = eis.kategorie;
                 if (eis.stück == 2) {
                     img.style.position = "fixed";

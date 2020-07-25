@@ -240,7 +240,7 @@ namespace Eisdiele {
                 img.style.bottom = "0%";
                 pictureDiv.appendChild(img);
             }
-            else if (eis.kategorie == "Eis") {
+            if (eis.kategorie == "Eis") {
                 isIceString = eis.kategorie;
                 if (eis.stück == 2) {
                     img.style.position = "fixed";
@@ -252,6 +252,7 @@ namespace Eisdiele {
                     pictureDiv.appendChild(img);
                 }
             } else isIceString = "-999";
+
             if (eis.kategorie == "Stecksachen") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
@@ -260,12 +261,14 @@ namespace Eisdiele {
                 img.style.transform += ("rotate" + "(" + rotateNumber + "deg)");
                 pictureDiv.appendChild(img);
             } else isToppingString = "-999";
+
             if (eis.kategorie == "Streusel") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
                 img.style.bottom += (constantNumber * 190) - (25 * index) + "px";
                 pictureDiv.appendChild(img);
             } else isToppingString = "-999";
+            
             if (eis.kategorie == "Soßen") {
                 isToppingString = eis.kategorie;
                 img.style.position = "fixed";
