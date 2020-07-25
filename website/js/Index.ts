@@ -160,7 +160,8 @@ namespace Eisdiele {
                     if (jsonObj[index].kategorie == "Eis") {
                         formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
                     }
-                    console.log(isIceString);
+                    console.log("isIceString: " + isIceString);
+                    console.log("isToppingString: " + isToppingString);
                     if (isIceString == "Eis") {
                         if (jsonObj[index].kategorie != "Waffel")
                             formatDiv.appendChild(button).innerHTML = "Ab in die Kreation! ";
