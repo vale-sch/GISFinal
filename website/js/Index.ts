@@ -212,6 +212,8 @@ namespace Eisdiele {
         }
 
         for (let index: number = 0; index <= localStorage.length - 1; index++) {
+            isIceString = "-999";
+            isToppingString = "-999";
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);

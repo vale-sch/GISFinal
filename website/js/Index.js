@@ -176,6 +176,8 @@ var Eisdiele;
             iceDiv.appendChild(actualCreation).innerHTML = "Ihre persönliche Kreation:";
         }
         for (let index = 0; index <= localStorage.length - 1; index++) {
+            isIceString = "-999";
+            isToppingString = "-999";
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             eis = JSON.parse(jsonString);
