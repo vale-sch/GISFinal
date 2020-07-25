@@ -121,6 +121,7 @@ var Eisdiele;
             }
             if (localStorage.length > 0) {
                 if (!isTopping) {
+                    console.log("isTOpping?" + isTopping);
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");
                     button.addEventListener("click", onClickCreate.bind(jsonObj[index]));
@@ -230,6 +231,7 @@ var Eisdiele;
         console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
+        console.log("ToppingString:" + isToppingString);
         if (isToppingString != "Streusel" || "Stecksachen" || "Soßen") {
             isTopping = false;
         }
