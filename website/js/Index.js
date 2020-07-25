@@ -120,7 +120,6 @@ var Eisdiele;
                 }
             }
             if (localStorage.length > 0) {
-                console.log("isTOpping?" + isTopping);
                 if (!isTopping) {
                     let button = document.createElement("button");
                     button.setAttribute("class", "creationButton");

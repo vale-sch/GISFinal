@@ -53,8 +53,6 @@ var Eisdiele;
         informationDiv.appendChild(confirmTag).innerHTML = "Wir senden Ihnen automatisch eine Bestätigungs Email, dort finden Sie unsere Bankdaten um die Bestellung abzuschließen";
         informationDiv.appendChild(infoTag).innerHTML = "Mit dem Klick auf den Buttons, erklären Sie sich einverstanden mit den Shop AGB`s";
         informationDiv.appendChild(sendBuy).innerHTML = "Bezahlen";
-        console.log("-------localStorage-------");
-        console.log(localStorage);
     }
     function generateContentInForm() {
         for (let index = 0; index <= localStorage.length - 1; index++) {

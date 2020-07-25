@@ -36,8 +36,8 @@ var Eisdiele;
         inputDiv.style.paddingLeft = "5%";
         let out = document.getElementById("output");
         out.innerHTML = "";
+        // !Quelle: Inspirationen von LukasScheuerle BeispielServerA11
         for (let order of orders) {
-            console.log("order:" + order);
             out.appendChild(createOrder(order));
         }
     }
