@@ -281,6 +281,11 @@ namespace Eisdiele {
 
 
         }
+        if (isToppingString != "-999") {
+            isTopping = true;
+        } else {
+            isTopping = false;
+        }
         console.log("isIceString: " + isIceString);
         console.log("isToppingString: " + isToppingString);
         console.log("------localstorage-------");
@@ -289,11 +294,7 @@ namespace Eisdiele {
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
         
-        if (isToppingString != "-999") {
-            isTopping = true;
-        } else {
-            isTopping = false;
-        }
+        
 
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;

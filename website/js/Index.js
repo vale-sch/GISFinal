@@ -235,18 +235,18 @@ var Eisdiele;
                 pictureDiv.appendChild(img);
             }
         }
-        console.log("isIceString: " + isIceString);
-        console.log("isToppingString: " + isToppingString);
-        console.log("------localstorage-------");
-        console.log(localStorage);
-    }
-    function onClickDeleteThis(_click) {
         if (isToppingString != "-999") {
             isTopping = true;
         }
         else {
             isTopping = false;
         }
+        console.log("isIceString: " + isIceString);
+        console.log("isToppingString: " + isToppingString);
+        console.log("------localstorage-------");
+        console.log(localStorage);
+    }
+    function onClickDeleteThis(_click) {
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
         onClickClearandReload();
