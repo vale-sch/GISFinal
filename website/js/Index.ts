@@ -215,8 +215,6 @@ namespace Eisdiele {
         isToppingString = "-999";
         isIceString = "-999";
         for (let index: number = 0; index <= localStorage.length - 1; index++) {
-
-
             let articleKey: string = <string>localStorage.key(index);
             let jsonString: string = <string>localStorage.getItem(articleKey);
             eis = <Eis>JSON.parse(jsonString);
@@ -225,16 +223,17 @@ namespace Eisdiele {
             img.setAttribute("src", eis.image);
 
             let informationTag: HTMLAnchorElement = <HTMLAnchorElement>document.createElement("a");
-           
-
-
+            informationTag.setAttribute("class", "fas fa-times");
+            informationTag.setAttribute("href", "#fas fa-times");
             informationTag.addEventListener("click", onClickDeleteThis.bind(eis));
 
             let pictureDiv: HTMLDivElement;
             pictureDiv = document.createElement("div");
             pictureDiv.setAttribute("class", "pictureDiv");
+
             iceDiv.appendChild(pictureDiv);
             iceDiv.appendChild(informationTag).innerHTML = eis.stück + "." + "-" + eis.name;
+
             img.style.left = "18%";
             if (eis.kategorie == "Waffel") {
                 img.style.position = "fixed";
@@ -276,34 +275,19 @@ namespace Eisdiele {
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
             }
-            if (isIceString == "-999") {
-                informationTag.setAttribute("class", "fas fa-times");
-                informationTag.setAttribute("href", "#fas fa-times");
-            }
-
-
         }
         if (isToppingString != "-999") {
             isTopping = true;
         } else {
             isTopping = false;
         }
-        console.log("isIceString: " + isIceString);
-        console.log("isToppingString: " + isToppingString);
-        console.log("------localstorage-------");
-        console.log(localStorage);
     }
 
     function onClickDeleteThis(this: Eis, _click: Event): void {
-
-
-
         localStorage.removeItem(this.stück.toString());
         amount = localStorage.length;
 
-        
         onClickClearandReload();
-
     }
 
     function onClickClearandReload(): void {

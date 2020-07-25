@@ -186,6 +186,8 @@ var Eisdiele;
             img = document.createElement("img");
             img.setAttribute("src", eis.image);
             let informationTag = document.createElement("a");
+            informationTag.setAttribute("class", "fas fa-times");
+            informationTag.setAttribute("href", "#fas fa-times");
             informationTag.addEventListener("click", onClickDeleteThis.bind(eis));
             let pictureDiv;
             pictureDiv = document.createElement("div");
@@ -231,10 +233,6 @@ var Eisdiele;
                 img.style.bottom += (constantNumber * 190) - (20 * index) + "px";
                 pictureDiv.appendChild(img);
             }
-            if (isIceString == "-999") {
-                informationTag.setAttribute("class", "fas fa-times");
-                informationTag.setAttribute("href", "#fas fa-times");
-            }
         }
         if (isToppingString != "-999") {
             isTopping = true;
@@ -242,10 +240,6 @@ var Eisdiele;
         else {
             isTopping = false;
         }
-        console.log("isIceString: " + isIceString);
-        console.log("isToppingString: " + isToppingString);
-        console.log("------localstorage-------");
-        console.log(localStorage);
     }
     function onClickDeleteThis(_click) {
         localStorage.removeItem(this.stück.toString());
