@@ -116,7 +116,7 @@ namespace Eisdiele {
         clickedButton.style.display = "none";
 
         let changeStatusButton: HTMLButtonElement = document.createElement("button");
-        changeStatusButton.addEventListener("click", changeStatusToSent.bind(changeStatusButton));
+        parentDiv.addEventListener("click", changeStatusToSent.bind(changeStatusButton));
         changeStatusButton.innerText = "Paket verschickt";
 
         paidDiv.style.position = "absolute";
@@ -136,7 +136,7 @@ namespace Eisdiele {
 
         let removeBtn: HTMLButtonElement = document.createElement("button");
         removeBtn.innerText = "Aus der Datenbank entfernen";
-        removeBtn.addEventListener("click", removeOne.bind(removeBtn));
+        parentDiv.addEventListener("click", removeOne.bind(removeBtn));
 
         sentDiv.style.position = "absolute";
         sentDiv.style.paddingTop = "2%";
