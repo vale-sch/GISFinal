@@ -97,52 +97,52 @@ namespace Eisdiele {
         // url += "/";
 
         let clickedButton: HTMLElement = <HTMLElement>_e.target;
-        let parentDiv: HTMLElement = <HTMLElement>clickedButton.parentElement;
-        let idToRemove: string = parentDiv.getAttribute("_id")!;
+        let parentDivRemove: HTMLElement = <HTMLElement>clickedButton.parentElement;
+        let idToRemove: string = parentDivRemove.getAttribute("_id")!;
 
         url += "/deleteOne?id=" + idToRemove;
         url += query.toString();
 
-        parentDiv.remove();
+        parentDivRemove.remove();
         let response: Response = await fetch(url);
         console.log("Removed one: " + await response.json());
     }
 
     function changeStatusToPaid(_e: Event): void {
         let clickedButton: HTMLElement = <HTMLElement>_e.target;
-        let parentDiv: HTMLElement = <HTMLElement>clickedButton.parentElement;
+        let parentDiv0: HTMLElement = <HTMLElement>clickedButton.parentElement;
 
         paidDiv = <HTMLDivElement>document.getElementById("paid");
         clickedButton.style.display = "none";
 
         let changeStatusButton: HTMLButtonElement = document.createElement("button");
-        parentDiv.addEventListener("click", changeStatusToSent.bind(changeStatusButton));
+        changeStatusButton.addEventListener("click", changeStatusToSent.bind(changeStatusButton));
         changeStatusButton.innerText = "Paket verschickt";
 
         paidDiv.style.position = "absolute";
         paidDiv.style.paddingTop = "2%";
         paidDiv.style.maxWidth = "30%";
         paidDiv.style.left = "37.5%";
-        paidDiv.appendChild(parentDiv);
-        parentDiv.appendChild(changeStatusButton);
+        paidDiv.appendChild(parentDiv0);
+        parentDiv0.appendChild(changeStatusButton);
     }
     
     function changeStatusToSent(_e: Event): void {
         let clickedButton: HTMLElement = <HTMLElement>_e.target;
-        let parentDiv: HTMLElement = <HTMLElement>clickedButton.parentElement;
+        let parentDiv1: HTMLElement = <HTMLElement>clickedButton.parentElement;
 
         sentDiv = <HTMLDivElement>document.getElementById("paid");
         clickedButton.style.display = "none";
 
         let removeBtn: HTMLButtonElement = document.createElement("button");
         removeBtn.innerText = "Aus der Datenbank entfernen";
-        parentDiv.addEventListener("click", removeOne.bind(removeBtn));
+        removeBtn.addEventListener("click", removeOne.bind(removeBtn));
 
         sentDiv.style.position = "absolute";
         sentDiv.style.paddingTop = "2%";
         sentDiv.style.maxWidth = "30%";
         sentDiv.style.left = "70%";
-        sentDiv.appendChild(parentDiv);
-        parentDiv.appendChild(removeBtn);
+        sentDiv.appendChild(parentDiv1);
+        parentDiv1.appendChild(removeBtn);
     }
 }

@@ -72,43 +72,43 @@ var Eisdiele;
         let query = new URLSearchParams(formData);
         // url += "/";
         let clickedButton = _e.target;
-        let parentDiv = clickedButton.parentElement;
-        let idToRemove = parentDiv.getAttribute("_id");
+        let parentDivRemove = clickedButton.parentElement;
+        let idToRemove = parentDivRemove.getAttribute("_id");
         url += "/deleteOne?id=" + idToRemove;
         url += query.toString();
-        parentDiv.remove();
+        parentDivRemove.remove();
         let response = await fetch(url);
         console.log("Removed one: " + await response.json());
     }
     function changeStatusToPaid(_e) {
         let clickedButton = _e.target;
-        let parentDiv = clickedButton.parentElement;
+        let parentDiv0 = clickedButton.parentElement;
         paidDiv = document.getElementById("paid");
         clickedButton.style.display = "none";
         let changeStatusButton = document.createElement("button");
-        parentDiv.addEventListener("click", changeStatusToSent.bind(changeStatusButton));
+        changeStatusButton.addEventListener("click", changeStatusToSent.bind(changeStatusButton));
         changeStatusButton.innerText = "Paket verschickt";
         paidDiv.style.position = "absolute";
         paidDiv.style.paddingTop = "2%";
         paidDiv.style.maxWidth = "30%";
         paidDiv.style.left = "37.5%";
-        paidDiv.appendChild(parentDiv);
-        parentDiv.appendChild(changeStatusButton);
+        paidDiv.appendChild(parentDiv0);
+        parentDiv0.appendChild(changeStatusButton);
     }
     function changeStatusToSent(_e) {
         let clickedButton = _e.target;
-        let parentDiv = clickedButton.parentElement;
+        let parentDiv1 = clickedButton.parentElement;
         sentDiv = document.getElementById("paid");
         clickedButton.style.display = "none";
         let removeBtn = document.createElement("button");
         removeBtn.innerText = "Aus der Datenbank entfernen";
-        parentDiv.addEventListener("click", removeOne.bind(removeBtn));
+        removeBtn.addEventListener("click", removeOne.bind(removeBtn));
         sentDiv.style.position = "absolute";
         sentDiv.style.paddingTop = "2%";
         sentDiv.style.maxWidth = "30%";
         sentDiv.style.left = "70%";
-        sentDiv.appendChild(parentDiv);
-        parentDiv.appendChild(removeBtn);
+        sentDiv.appendChild(parentDiv1);
+        parentDiv1.appendChild(removeBtn);
     }
 })(Eisdiele || (Eisdiele = {}));
 //# sourceMappingURL=administrator.js.map
