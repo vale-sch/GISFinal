@@ -2,26 +2,24 @@ Server Instruktionen:
 
 Um auf die Seiten zu gelangen: 
 
-ICE Shop: https://vale-sch.github.io/GISFinal/website/index.html
+ICE Shop + AdminSeite: https://vale-sch.github.io/GISFinal/website/index.html
 
-
-
-
-Aktuell stehender Code läuft über den Server
+	--> Aktuell stehender Code läuft über den Heroku-Server
 
 
 Um Lokal auszuführen: 
-Müssen in den Dateien administrator.ts, Basket.ts, administrator.html und warenkorb.html die url in: http:localhost:8100 geändert werden. 
+1. Müssen in den Dateien administrator.ts, Basket.ts und warenkorb.html die url in: "http:localhost:8100" geändert werden. 
 
-Die lokale Datenbank liegt mit im Ordner und wird einmal über:
+(Die lokale Datenbank liegt mit im Ordner)
 
-mongod --port 27020 --dbpath "weg zur Datenbank", gestartet 
+2. Shell: 	   mongod --port 27020 --dbpath <weg/zur/Datenban/iceOrders>
 
-Und über den lokalen Server: 
+3. Neue shell mit: mongo --port 27020 start
 
-"Pfad zum js Ordner " node server.js local 
+4. Neue Shell mit: <Pfad zum js Ordner> node server.js local 
 
-gestartet
+Nun sollte, die lokale Version der Eisseite laufen.
+
 
 JSON-Datei-Struktur:
 
